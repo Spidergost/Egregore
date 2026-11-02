@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Egregore – outils et ressources pour le jeu de rôle</title>
+<meta name="description" content="Outils génériques pour joueurs et maîtres du jeu : dés, générateurs, tables aléatoires à graine partageable, fiches et templates. Sans compte, sans serveur.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="assets/css/egregore.css">
+<script src="assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Egregore</h1>
+  <p class="lead">Des outils et des ressources génériques pour vos parties de jeu de rôle, côté joueur comme côté maître du jeu. Compatibles avec n'importe quel système, gratuits, et tout reste dans votre navigateur.</p>
+
+  <div class="grid">
+    <a class="tile" href="player/"><span class="ico">🧝</span><h2>Joueur</h2><p>Créez un concept de personnage, remplissez une fiche générique, lancez vos dés.</p></a>
+    <a class="tile" href="game-master/"><span class="ico">🎭</span><h2>Maître du jeu</h2><p>L'Atelier de MJ : PNJ, auberges, villages, quêtes, donjons, butin, suivi de combat et carnet.</p></a>
+    <a class="tile" href="commun/"><span class="ico">📚</span><h2>Commun</h2><p>Glossaire, conseils de table, et toutes les tables aléatoires partageables.</p></a>
+    <a class="tile" href="templates/"><span class="ico">📄</span><h2>Templates</h2><p>Fiches, scénarios, PNJ, lieux, comptes rendus : à copier ou télécharger.</p></a>
+  </div>
+
+  <section class="card" aria-labelledby="dayT">
+    <h2 id="dayT">✨ Inspiration du jour</h2>
+    <div class="out" id="day">Chargement…</div>
+    <p class="hint" style="margin-bottom:0">Le même tirage pour tout le monde aujourd'hui, grâce à une graine fondée sur la date. <a id="dayLink" href="commun/tables.html">Explorer d'autres tirages</a>.</p>
+  </section>
+
+  <section class="card">
+    <h2>Comment ça marche ?</h2>
+    <p style="margin-top:0">Chaque tirage utilise une <b>graine</b> : un court code comme <code>k4m9xq</code>. Même graine, même résultat, pour tout le monde. Envoyez un lien à vos joueurs et ils verront exactement la même rumeur, la même auberge ou le même PNJ que vous.</p>
+    <p style="margin-bottom:0">Les tables sont de simples fichiers JSON dans <code>data/</code> : n'importe qui peut en ajouter une sans toucher au code.</p>
+  </section>
+</div>
+</main>
+<script>
+(async () => {
+  const E = Egregore; E.mount('home');
+  const today = new Date().toISOString().slice(0, 10);
+  const box = document.getElementById('day');
+  try {
+    const res = await E.roll('accroches', E.makeRng('jour-' + today));
+    box.textContent = res.text;
+    document.getElementById('dayLink').href = 'commun/tables.html?t=accroches';
+  } catch (e) {
+    box.textContent = 'Les tirages demandent un serveur web (GitHub Pages ou « python -m http.server »).';
+  }
+})();
+</script>
+</body>
+</html>

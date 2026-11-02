@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Joueur – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Espace joueur</h1>
+  <p class="lead">Un concept de personnage en un clic, une fiche générique que vous adaptez à votre système, et des dés.</p>
+  <nav class="tabs" id="tabs" role="tablist" aria-label="Outils joueur"></nav>
+  <div id="view"></div>
+</div>
+</main>
+<script>
+(() => {
+'use strict';
+const E = Egregore; E.mount('player');
+const $ = (s, r = document) => r.querySelector(s);
+const TABS = [['gen', '✨ Concept de PJ'], ['fiche', '📝 Fiche'], ['des', '🎲 Dés']];
+const FKEY = 'egregore-fiche-v1', FICHE_ID = 'fiche-pj';
+let tab = (location.hash || '#gen').slice(1); if (!TABS.some(t => t[0] === tab)) tab = 'gen';
+const view = $('#view');
+
+/* ------------------------------------------------------------ concept */
+const g = { seed: E.getSeed(), res: null, locks: [], tick: 0, error: '' };
+async function genAll(fresh) {
+  if (fresh) g.seed = E.newSeed();
+  try {
+    const r = await E.roll(FICHE_ID, E.makeRng(g.seed));
+    if (g.res) r.fields = r.fields.map((f, i) => g.locks[i] ? g.res.fields[i] : f);
+    g.res = r; g.error = '';
+  } catch (e) { g.error = e.message; }
+  if (tab === 'gen') drawGen();
+}
+function drawGen() {
+  if (g.error) { view.innerHTML = `<section class="card"><p><b>Impossible de charger les tables.</b></p><p class="hint">Ouvrez le site via GitHub Pages ou un serveur local (<code>python -m http.server</code>).</p></section>`; return; }
+  if (!g.res) { view.innerHTML = '<section class="card"><p class="hint">Chargement…</p></section>'; return; }
+  view.innerHTML = `<section class="card"><h2>Concept de personnage</h2>
+    <p class="hint" style="margin-top:-.3rem">Des points d'accroche sans aucune règle : gardez ce qui vous inspire, relancez le reste. Cliquez sur un texte pour le modifier ; le cadenas le protège.</p>
+    ${g.res.fields.map((f, i) => `<div class="field ${g.locks[i] ? 'locked' : ''}"><label>${E.esc(f.k)}</label><span class="val" contenteditable="true" data-i="${i}" spellcheck="false">${E.esc(f.v)}</span>
+      <button class="btn mini" data-act="lock" data-i="${i}" aria-pressed="${!!g.locks[i]}" title="Verrouiller" aria-label="Verrouiller ${E.esc(f.k)}">${g.locks[i] ? '🔒' : '🔓'}</button>
+      <button class="btn mini" data-act="reroll" data-i="${i}" title="Relancer ce champ" aria-label="Relancer ${E.esc(f.k)}">🎲</button></div>`).join('')}
+    <div class="row" style="margin-top:14px"><button class="btn primary" data-act="regen">🎲 Tout relancer</button><button class="btn" data-act="copy">Copier</button><button class="btn" data-act="link">🔗 Lien de ce tirage</button><button class="btn" data-act="tosheet">📝 Envoyer vers la fiche</button></div>
+    <p class="seedbox" style="margin-top:10px">graine <input type="text" id="seed" value="${E.esc(g.seed)}" aria-label="Graine" spellcheck="false" autocomplete="off"> <span>Le lien reproduit le tirage initial, avant vos modifications.</span></p></section>`;
+}
+
+/* ------------------------------------------------------------ fiche */
+const DEF = () => E.ficheBlank();
+let F = E.ficheNorm(E.store.get(FKEY, {}));
+const saveF = () => { F.maj = new Date().toISOString(); E.store.set(FKEY, F); };
+saveF();
+function drawFiche() {
+  view.innerHTML = `<section class="card"><div class="row"><h2 class="grow" style="margin:0">Fiche de personnage</h2>
+      <button class="btn mini" data-act="fprint">🖨 Imprimer</button><button class="btn mini" data-act="fexport">⬇ Exporter</button><button class="btn mini" data-act="fimport">⬆ Importer</button><button class="btn mini danger" data-act="freset">Nouvelle fiche</button>
+      <input type="file" id="fimp" accept="application/json,.json" hidden></div>
+    <p class="hint">Fiche libre, enregistrée dans ce navigateur : renommez les caractéristiques selon votre système. Exportez un fichier pour la garder ou la partager.</p>
+    <div class="row" style="margin:10px 0"><input class="grow" type="text" data-f="nom" value="${E.esc(F.nom)}" placeholder="Nom" aria-label="Nom"><input class="grow" type="text" data-f="concept" value="${E.esc(F.concept)}" placeholder="Concept, classe, origine…" aria-label="Concept"></div>
+    <h3>Caractéristiques</h3>
+    <div class="sheet-grid">${F.stats.map((s, i) => `<div class="stat"><input type="text" data-s="n" data-i="${i}" value="${E.esc(s.n)}" aria-label="Nom de la caractéristique"><input type="number" data-s="v" data-i="${i}" value="${s.v}" aria-label="Valeur de ${E.esc(s.n)}"><button class="btn mini noprint" data-act="sdel" data-i="${i}" aria-label="Supprimer">✕</button></div>`).join('')}</div>
+    <div class="row noprint" style="margin-top:8px"><button class="btn mini" data-act="sadd">+ Caractéristique</button></div>
+    <h3>Jauges</h3>
+    ${F.tracks.map((t, i) => `<div class="track"><input type="text" data-t="n" data-i="${i}" value="${E.esc(t.n)}" aria-label="Nom de la jauge">
+       <button class="btn mini" data-act="tdec" data-i="${i}" aria-label="Retirer 1">−</button><input type="number" data-t="cur" data-i="${i}" value="${t.cur}" aria-label="Valeur actuelle"><span class="hint">/</span><input type="number" data-t="max" data-i="${i}" value="${t.max}" aria-label="Maximum">
+       <button class="btn mini" data-act="tinc" data-i="${i}" aria-label="Ajouter 1">+</button>
+       <div class="bar"><i style="width:${t.max > 0 ? Math.max(0, Math.min(100, t.cur / t.max * 100)) : 0}%"></i></div></div>`).join('')}
+    <div class="row noprint" style="margin-top:8px"><button class="btn mini" data-act="tadd">+ Jauge</button></div>
+    <h3>Bonus et malus en cours</h3>
+    ${F.effets.map((x, i) => `<div class="track" style="grid-template-columns:auto 1fr 1fr auto auto"><select data-e="type" data-i="${i}" aria-label="Type"><option value="bonus" ${x.type === 'bonus' ? 'selected' : ''}>Bonus</option><option value="malus" ${x.type === 'malus' ? 'selected' : ''}>Malus</option></select>
+       <input type="text" data-e="n" data-i="${i}" value="${E.esc(x.n)}" placeholder="Nom" aria-label="Nom de l'effet"><input type="text" data-e="note" data-i="${i}" value="${E.esc(x.note || '')}" placeholder="Effet" aria-label="Description"><input type="number" min="0" data-e="rounds" data-i="${i}" value="${x.rounds || ''}" placeholder="tours" style="width:70px" aria-label="Durée en tours"><button class="btn mini noprint" data-act="edel" data-i="${i}" aria-label="Supprimer">✕</button></div>`).join('') || '<p class="hint">Aucun effet. Le MJ peut en ajouter pendant la session.</p>'}
+    <div class="row noprint" style="margin-top:8px"><button class="btn mini" data-act="eadd">+ Effet</button></div>
+    <h3>Capacités et compétences</h3><textarea data-f="capacites" aria-label="Capacités">${E.esc(F.capacites)}</textarea>
+    <h3>Inventaire</h3><textarea data-f="inventaire" aria-label="Inventaire">${E.esc(F.inventaire)}</textarea>
+    <h3>Notes, liens, historique</h3><textarea data-f="notes" aria-label="Notes" style="min-height:180px">${E.esc(F.notes)}</textarea>
+    <h3>Journal de session</h3>
+    ${F.journal.length ? `<ul class="plain hist">${F.journal.slice().reverse().slice(0, 60).map(j => `<li><span class="hint">${E.esc((j.d || '').slice(0, 10))} · ${E.esc(j.s || '')}</span><span>${E.esc(j.t)}</span></li>`).join('')}</ul><div class="row noprint" style="margin-top:8px"><button class="btn mini danger" data-act="jclear">Vider le journal</button></div>` : '<p class="hint">Rempli par le MJ lorsque vous lui confiez votre fiche. Réimportez ici la version qu\'il vous rend.</p>'}</section>`;
+}
+
+/* ------------------------------------------------------------ dés */
+const D = { expr: E.store.get('egregore-expr', 'd20'), hist: [] };
+function fmtDet(r) {
+  return r.parts.map(p => 'mod' in p ? `<b>${p.mod < 0 ? '−' : '+'}${Math.abs(p.mod)}</b>` :
+    `<span class="grp"><i>${E.esc(p.label)}</i>${p.rolls.map((v, i) => `<b class="die${!p.keep[i] ? ' drop' : p.faces === 20 && v === 20 ? ' crit' : p.faces === 20 && v === 1 ? ' fumble' : ''}">${v}</b>`).join('')}</span>`).join('');
+}
+function drawDes() {
+  view.innerHTML = `<section class="card"><h2>Lanceur de dés</h2>
+    <form id="rollForm" class="row"><input class="grow" type="text" id="expr" value="${E.esc(D.expr)}" placeholder="ex. 2d6+3, 4d6kh3, d100" autocomplete="off" aria-label="Formule de dés"><button class="btn primary">Lancer</button></form>
+    <div class="row" style="margin:10px 0">${['d4', 'd6', 'd8', 'd10', 'd12', 'd20', 'd100'].map(d => `<button class="btn mini" data-act="quick" data-v="${d}">${d}</button>`).join('')}<button class="btn mini" data-act="adv" data-v="kh">Avantage</button><button class="btn mini" data-act="adv" data-v="kl">Désavantage</button></div>
+    <p class="hint">Syntaxe : <code>NdF</code>, additions et soustractions (<code>2d8+1d4-1</code>), <code>kh</code>/<code>kl</code> pour garder les meilleurs/pires dés (<code>4d6kh3</code>).</p>
+    <div class="result" id="result" aria-live="polite"><span class="hint">Le résultat s'affiche ici.</span></div></section>
+    <section class="card"><h2>Historique</h2><ul class="plain hist" id="hist"></ul></section>`;
+  drawHist();
+}
+function drawHist() {
+  const h = $('#hist'); if (!h) return;
+  h.innerHTML = D.hist.length ? D.hist.map(x => `<li><b>${x.total}</b><span>${E.esc(x.expr)}</span><span class="det">${x.det}</span></li>`).join('') : '<li class="hint">Aucun jet pour le moment.</li>';
+}
+function doRoll(expr) {
+  const res = $('#result');
+  try {
+    const r = E.dice(expr, E.makeRng(E.newSeed())), det = fmtDet(r);
+    D.expr = expr; E.store.set('egregore-expr', expr);
+    res.innerHTML = `<div class="total">${r.total}</div><div class="det">${det}</div>`;
+    D.hist.unshift({ expr: r.expr, total: r.total, det }); D.hist = D.hist.slice(0, 30); drawHist();
+  } catch (e) { res.innerHTML = `<span style="color:var(--bad)">${E.esc(e.message)}</span>`; }
+}
+
+/* ------------------------------------------------------------ rendu & événements */
+function render() {
+  $('#tabs').innerHTML = TABS.map(t => `<button role="tab" aria-selected="${t[0] === tab}" data-tab="${t[0]}">${t[1]}</button>`).join('');
+  ({ gen: drawGen, fiche: drawFiche, des: drawDes })[tab]();
+}
+const rolled = async (i, rng) => { g.res.fields[i].v = await E.rollChamp(FICHE_ID, i, rng); drawGen(); };
+const ACT = {
+  regen: () => genAll(true),
+  reroll: b => { g.tick++; rolled(+b.dataset.i, E.makeRng(g.seed + ':' + g.tick)); },
+  lock: b => { g.locks[+b.dataset.i] = !g.locks[+b.dataset.i]; drawGen(); },
+  copy: () => E.copy(E.toText(g.res)),
+  link: () => E.copy(E.setParams({ seed: g.seed }), 'Lien copié'),
+  tosheet: () => {
+    F.nom = g.res.fields[0].v;
+    F.concept = g.res.fields.filter(f => ['Origine', 'Trait'].includes(f.k)).map(f => f.v).join(' · ');
+    const lines = g.res.fields.slice(1).map(f => `${f.k} : ${f.v}`).join('\n');
+    F.notes = (F.notes ? F.notes + '\n\n' : '') + lines; saveF(); tab = 'fiche'; location.hash = tab; render(); E.toast('Concept envoyé vers la fiche');
+  },
+  sadd: () => { F.stats.push({ n: 'Nouvelle', v: 0 }); saveF(); drawFiche(); },
+  sdel: b => { F.stats.splice(+b.dataset.i, 1); saveF(); drawFiche(); },
+  tadd: () => { F.tracks.push({ n: 'Jauge', cur: 5, max: 5 }); saveF(); drawFiche(); },
+  tinc: b => { const t = F.tracks[+b.dataset.i]; t.cur = Math.min(t.max, t.cur + 1); saveF(); drawFiche(); },
+  tdec: b => { const t = F.tracks[+b.dataset.i]; t.cur = Math.max(0, t.cur - 1); saveF(); drawFiche(); },
+  eadd: () => { F.effets.push({ type: 'bonus', n: '', note: '', rounds: 0 }); saveF(); drawFiche(); },
+  edel: b => { F.effets.splice(+b.dataset.i, 1); saveF(); drawFiche(); },
+  jclear: () => { if (confirm('Vider le journal de session ?')) { F.journal = []; saveF(); drawFiche(); } },
+  fprint: () => window.print(),
+  fexport: () => E.download((F.nom || 'personnage').replace(/[^\w-]+/g, '_') + '.json', JSON.stringify(E.ficheClean(F), null, 2), 'application/json'),
+  fimport: () => $('#fimp').click(),
+  freset: () => { if (confirm('Effacer la fiche actuelle ? Pensez à l\'exporter avant.')) { F = DEF(); saveF(); drawFiche(); } },
+  quick: b => { $('#expr').value = b.dataset.v; doRoll(b.dataset.v); },
+  adv: b => { const e = $('#expr'), m = e.value.replace(/\s/g, '').match(/[+-]\d+$/); const x = '2d20' + b.dataset.v + '1' + (m ? m[0] : ''); e.value = x; doRoll(x); }
+};
+document.addEventListener('click', e => {
+  const t = e.target.closest('[data-tab]'); if (t) { tab = t.dataset.tab; location.hash = tab; render(); return; }
+  const b = e.target.closest('[data-act]'); if (b && ACT[b.dataset.act]) ACT[b.dataset.act](b);
+});
+document.addEventListener('submit', e => { e.preventDefault(); if (e.target.id === 'rollForm') doRoll($('#expr').value); });
+document.addEventListener('input', e => {
+  const t = e.target;
+  if (t.dataset.f) { F[t.dataset.f] = t.value; saveF(); }
+  else if (t.dataset.s) { const s = F.stats[+t.dataset.i]; s[t.dataset.s] = t.dataset.s === 'v' ? (parseInt(t.value) || 0) : t.value; saveF(); }
+  else if (t.dataset.e) { const x = F.effets[+t.dataset.i]; x[t.dataset.e] = t.dataset.e === 'rounds' ? (parseInt(t.value) || 0) : t.value; saveF(); }
+  else if (t.dataset.t) { const k = F.tracks[+t.dataset.i]; k[t.dataset.t] = t.dataset.t === 'n' ? t.value : (parseInt(t.value) || 0); saveF(); }
+  else if (t.dataset.i !== undefined && t.isContentEditable && g.res) g.res.fields[+t.dataset.i].v = t.textContent;
+});
+document.addEventListener('change', e => {
+  const t = e.target;
+  if (t.dataset.t === 'cur' || t.dataset.t === 'max') drawFiche();
+  if (t.id === 'seed') { g.seed = t.value.trim() || E.newSeed(); g.locks = []; g.res = null; genAll(false); }
+  if (t.id === 'fimp' && t.files[0]) {
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        let d = JSON.parse(r.result);
+        if (d && Array.isArray(d.persos)) {                       // fichier de session : choisir un personnage
+          const list = d.persos.filter(E.isFiche);
+          if (!list.length) throw 0;
+          const n = list.length === 1 ? 1 : parseInt(prompt('Quel personnage charger ?\n' + list.map((p, i) => (i + 1) + '. ' + (p.nom || '(sans nom)')).join('\n'), '1'));
+          d = list[n - 1]; if (!d) return;
+        }
+        if (!E.isFiche(d)) throw 0;
+        F = E.ficheNorm(d); saveF(); drawFiche(); E.toast('Fiche importée');
+      } catch (_) { E.toast('Fichier invalide'); }
+      t.value = '';
+    };
+    r.readAsText(t.files[0]);
+  }
+});
+window.addEventListener('hashchange', () => { const h = location.hash.slice(1); if (h !== tab && TABS.some(t => t[0] === h)) { tab = h; render(); } });
+render(); genAll(false);
+})();
+</script>
+</body>
+</html>

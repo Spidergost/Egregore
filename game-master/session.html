@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Session de jeu – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+<style>
+.pcs{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;align-items:start}
+.pc{margin:0}
+.pc.sel{border-color:var(--accent)}
+.pc h2{display:flex;gap:8px;align-items:center;margin:0}
+.pc h2 span{flex:1;overflow:hidden;text-overflow:ellipsis}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chip{display:inline-flex;gap:4px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 10px;background:var(--bg);font-size:.88rem}
+.chip.bonus{border-color:var(--good);color:var(--good)}
+.chip.malus{border-color:var(--bad);color:var(--bad)}
+.chip button{border:0;background:transparent;cursor:pointer;color:inherit;padding:0 6px}
+.stats{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.stats label{font-size:.8rem;color:var(--muted);display:flex;gap:4px;align-items:center}
+.stats input{width:52px;padding:3px 6px}
+.tr{display:grid;grid-template-columns:1fr auto auto;gap:6px;align-items:center;padding:4px 0}
+.tr .bar{grid-column:1/-1}
+.sticky{background:var(--paper)}
+@media (min-width:900px) and (min-height:800px){.sticky{position:sticky;top:8px;z-index:4}}
+details.mini summary{font-weight:400;font-size:.9rem;color:var(--muted);padding:6px 0}
+textarea.sm{min-height:70px}
+.logl li{padding:5px 0;border-bottom:1px solid var(--line);display:flex;gap:10px}
+</style>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Session de jeu</h1>
+  <p class="lead">Chargez les fiches exportées par vos joueurs, suivez jauges, bonus, malus et butin pendant la partie, puis rendez-leur la version à jour.</p>
+  <div id="app"></div>
+  <input type="file" id="imp" accept="application/json,.json" multiple hidden>
+</div>
+</main>
+<script>
+(() => {
+'use strict';
+const E = Egregore; E.mount('mj');
+const KEY = 'egregore-session-v1';
+const $ = (s, r = document) => r.querySelector(s);
+const nowIso = () => new Date().toISOString();
+const blank = () => ({ format: 'egregore-session', version: 1, nom: 'Nouvelle session', date: nowIso().slice(0, 10), round: 1, persos: [], adversaires: [], log: [] });
+let S = Object.assign(blank(), E.store.get(KEY, {}));
+S.persos = (S.persos || []).map(p => Object.assign(E.ficheNorm(p), { _sel: p._sel !== false, _mj: p._mj || '' }));
+const ui = { amt: 1, track: '', eName: '', eType: 'bonus', eRounds: 0, loot: '', advName: '', advHp: 10, logTxt: '' };
+const save = () => E.store.set(KEY, S);
+const nm = p => p.nom || '(sans nom)';
+const byId = id => S.persos.find(p => p.id === id);
+const pct = (c, m) => m > 0 ? Math.max(0, Math.min(100, c / m * 100)) : 0;
+
+/* journal : une entrée de session + une entrée dans chaque fiche concernée */
+function log(txt, ids = []) {
+  const d = nowIso();
+  S.log.unshift({ d, t: txt, who: ids });
+  S.log = S.log.slice(0, 500);
+  for (const id of ids) { const p = byId(id); if (p) { p.journal.push({ d, s: S.nom, t: txt }); p.journal = p.journal.slice(-300); p.maj = d; } }
+}
+const sel = () => S.persos.filter(p => p._sel);
+
+/* actions */
+function adjust(p, i, delta) {
+  const t = p.tracks[i], old = t.cur;
+  t.cur = Math.max(0, Math.min(t.max, t.cur + delta));
+  if (t.cur !== old) log(`${nm(p)} : ${t.n} ${old} → ${t.cur}`, [p.id]);
+}
+function addEffect(p, e) {
+  p.effets.push(e);
+  log(`${nm(p)} : ${e.type === 'bonus' ? 'bonus' : 'malus'} « ${e.n} »${e.rounds ? ' (' + e.rounds + ' tours)' : ''}`, [p.id]);
+}
+function giveLoot(p, item) {
+  p.inventaire = (p.inventaire ? p.inventaire.replace(/\s+$/, '') + '\n' : '') + '- ' + item;
+  log(`${nm(p)} reçoit : ${item}`, [p.id]);
+}
+function nextRound() {
+  S.round++;
+  for (const p of S.persos) {
+    for (const e of p.effets.slice()) {
+      if (e.rounds > 0 && --e.rounds === 0) { p.effets.splice(p.effets.indexOf(e), 1); log(`${nm(p)} : « ${e.n} » prend fin`, [p.id]); }
+    }
+  }
+  log(`— Tour ${S.round} —`);
+}
+
+/* rendu */
+function trackNames() { return [...new Set(S.persos.flatMap(p => p.tracks.map(t => t.n)).filter(Boolean))]; }
+function pcHtml(p) {
+  return `<section class="card pc ${p._sel ? 'sel' : ''}" data-id="${p.id}">
+    <h2><input type="checkbox" data-act="sel" ${p._sel ? 'checked' : ''} aria-label="Sélectionner ${E.esc(nm(p))}"><span>${E.esc(nm(p))}</span>
+      <button class="btn mini" data-act="pexport" title="Télécharger la fiche à jour">⬇</button><button class="btn mini danger" data-act="pdel" title="Retirer de la session" aria-label="Retirer">✕</button></h2>
+    <div class="hint">${E.esc(p.concept || '')}</div>
+    ${p.tracks.map((t, i) => `<div class="tr"><span>${E.esc(t.n)} <b>${t.cur}</b> / ${t.max}</span>
+      <button class="btn mini" data-act="dec" data-i="${i}" aria-label="Retirer ${E.esc(t.n)}">−</button><button class="btn mini" data-act="inc" data-i="${i}" aria-label="Ajouter ${E.esc(t.n)}">+</button>
+      <div class="bar"><i style="width:${pct(t.cur, t.max)}%"></i></div></div>`).join('')}
+    <div class="stats">${p.stats.map((s, i) => `<label>${E.esc(s.n)}<input type="number" data-act="stat" data-i="${i}" value="${s.v}"></label>`).join('')}</div>
+    <div class="chips">${p.effets.map((x, i) => `<span class="chip ${x.type}" title="${E.esc(x.note || '')}">${x.type === 'malus' ? '▼' : '▲'} ${E.esc(x.n || 'effet')}${x.rounds ? ' · ' + x.rounds + ' t' : ''}<button data-act="edel" data-i="${i}" aria-label="Retirer l'effet">✕</button></span>`).join('') || '<span class="hint">Aucun bonus ni malus</span>'}</div>
+    <details class="mini"><summary>Inventaire</summary><textarea class="sm" data-act="inv" aria-label="Inventaire">${E.esc(p.inventaire)}</textarea></details>
+    <details class="mini"><summary>Notes du MJ (privées, non exportées dans le journal)</summary><textarea class="sm" data-act="mj" aria-label="Notes du MJ">${E.esc(p._mj)}</textarea></details>
+  </section>`;
+}
+function draw() {
+  const names = trackNames(), n = sel().length;
+  if (!names.includes(ui.track)) ui.track = names[0] || '';
+  $('#app').innerHTML = `
+  <section class="card">
+    <div class="row"><input class="grow" type="text" data-act="sname" value="${E.esc(S.nom)}" aria-label="Nom de la session"><input type="text" data-act="sdate" value="${E.esc(S.date)}" style="width:12ch" aria-label="Date">
+      <strong>Tour ${S.round}</strong><button class="btn primary" data-act="next">Tour suivant ▶</button></div>
+    <div class="row" style="margin-top:10px"><button class="btn" data-act="import">⬆ Charger des fiches</button><button class="btn" data-act="exportAll">⬇ Exporter la session</button><button class="btn" data-act="exportPcs">⬇ Rendre toutes les fiches</button><button class="btn danger" data-act="reset">Nouvelle session</button></div>
+    <p class="hint" style="margin-bottom:0">Enregistré dans ce navigateur. « Rendre toutes les fiches » télécharge un fichier par joueur, avec le journal de la session ; ils le réimportent dans leur onglet Fiche.</p>
+  </section>
+  ${S.persos.length ? `
+  <section class="card sticky">
+    <h2>Actions sur la sélection <span class="hint">(${n} personnage${n > 1 ? 's' : ''})</span></h2>
+    <div class="row"><label>Montant <input type="number" min="1" value="${ui.amt}" data-act="amt" style="width:70px"></label>
+      <select data-act="track" aria-label="Jauge">${names.map(t => `<option ${t === ui.track ? 'selected' : ''}>${E.esc(t)}</option>`).join('')}</select>
+      <button class="btn" data-act="gdmg">− Retirer</button><button class="btn" data-act="gheal">+ Ajouter</button>
+      <span class="hint">(un piège, un sort de soin…)</span>
+      <button class="btn mini" data-act="selall">Tous</button><button class="btn mini" data-act="selnone">Aucun</button></div>
+    <div class="row" style="margin-top:8px"><input class="grow" type="text" data-act="eName" value="${E.esc(ui.eName)}" placeholder="Bonus / malus : nom et effet (ex. Bénédiction +1 attaque)" aria-label="Nom de l'effet">
+      <select data-act="eType" aria-label="Type"><option value="bonus" ${ui.eType === 'bonus' ? 'selected' : ''}>Bonus</option><option value="malus" ${ui.eType === 'malus' ? 'selected' : ''}>Malus</option></select>
+      <input type="number" min="0" value="${ui.eRounds || ''}" placeholder="tours" data-act="eRounds" style="width:76px" aria-label="Durée en tours"><button class="btn" data-act="gfx">Appliquer</button></div>
+    <div class="row" style="margin-top:8px"><input class="grow" type="text" data-act="loot" value="${E.esc(ui.loot)}" placeholder="Butin à distribuer (objet, pièces…)" aria-label="Butin"><button class="btn" data-act="lootroll" title="Tirer dans « poches d'un malfrat »">🎲</button><button class="btn" data-act="gloot">Donner</button></div>
+  </section>
+  <div class="pcs">${S.persos.map(pcHtml).join('')}</div>` : `<section class="card"><p style="margin-top:0"><b>Aucune fiche chargée.</b></p><p class="hint" style="margin-bottom:0">Demandez à vos joueurs d'exporter leur fiche (onglet Fiche → Exporter) puis cliquez sur « Charger des fiches ». Vous pouvez en sélectionner plusieurs d'un coup.</p></section>`}
+  <section class="card" style="margin-top:16px"><h2>Adversaires</h2>
+    <form class="row" id="advForm"><input class="grow" type="text" data-act="advName" value="${E.esc(ui.advName)}" placeholder="Nom" aria-label="Nom"><input type="number" min="1" value="${ui.advHp}" data-act="advHp" style="width:80px" aria-label="PV"><button class="btn primary">Ajouter</button></form>
+    ${S.adversaires.map((a, i) => `<div class="tr" data-adv="${i}"><span>${E.esc(a.nom)} <b>${a.hp}</b> / ${a.max}</span><button class="btn mini" data-act="advdec" aria-label="Retirer des PV">−</button><button class="btn mini" data-act="advinc" aria-label="Ajouter des PV">+</button><div class="bar"><i style="width:${pct(a.hp, a.max)}%"></i></div></div>`).join('') || '<p class="hint" style="margin-bottom:0">Aucun adversaire. Utilisez le montant ci-dessus pour les − et +.</p>'}
+    ${S.adversaires.length ? '<div class="row" style="margin-top:8px"><button class="btn mini danger" data-act="advclear">Vider</button></div>' : ''}
+  </section>
+  <section class="card"><div class="row"><h2 class="grow" style="margin:0">Journal</h2><button class="btn mini danger" data-act="logclear">Vider</button></div>
+    <div class="row" style="margin:8px 0"><input class="grow" type="text" data-act="logTxt" value="${E.esc(ui.logTxt)}" placeholder="Ajouter une note à la session" aria-label="Note"><button class="btn" data-act="logadd">Ajouter</button></div>
+    <ul class="plain logl">${S.log.slice(0, 80).map(l => `<li><span class="hint">${E.esc(l.d.slice(11, 16))}</span><span>${E.esc(l.t)}</span></li>`).join('') || '<li class="hint">Rien pour l\'instant.</li>'}</ul></section>`;
+}
+
+/* fichiers */
+const fname = s => (s || 'fichier').replace(/[^\wÀ-ſ-]+/g, '_');
+function exportPc(p) { E.download(fname(nm(p)) + '.json', JSON.stringify(E.ficheClean(p), null, 2), 'application/json'); }
+function exportSession() { E.download('session-' + fname(S.nom) + '.json', JSON.stringify(S, null, 2), 'application/json'); }
+function importFiles(files) {
+  [...files].forEach(f => {
+    const r = new FileReader();
+    r.onload = () => {
+      try {
+        const d = JSON.parse(r.result);
+        if (Array.isArray(d.persos)) {                          // fichier de session
+          if (!confirm('Remplacer la session actuelle par « ' + (d.nom || f.name) + ' » ?')) return;
+          S = Object.assign(blank(), d); S.persos = S.persos.map(p => Object.assign(E.ficheNorm(p), { _sel: p._sel !== false, _mj: p._mj || '' }));
+          save(); draw(); E.toast('Session chargée'); return;
+        }
+        if (!E.isFiche(d)) throw 0;
+        const p = E.ficheNorm(d), ex = byId(p.id);
+        if (ex) {
+          if (!confirm('« ' + nm(p) + ' » est déjà dans la session. Remplacer par ce fichier ?')) return;
+          Object.assign(p, { _sel: ex._sel, _mj: ex._mj }); S.persos[S.persos.indexOf(ex)] = p;
+        } else { p._sel = true; p._mj = ''; S.persos.push(p); }
+        log(`${nm(p)} rejoint la session`, []);
+        save(); draw(); E.toast(nm(p) + ' chargé');
+      } catch (_) { E.toast('Fichier invalide : ' + f.name); }
+    };
+    r.readAsText(f);
+  });
+}
+
+/* événements */
+const pcOf = el => { const c = el.closest('[data-id]'); return c && byId(c.dataset.id); };
+const ACT = {
+  next: () => { nextRound(); },
+  import: () => { $('#imp').click(); return false; },
+  exportAll: () => { exportSession(); return false; },
+  exportPcs: () => { S.persos.forEach((p, i) => setTimeout(() => exportPc(p), i * 350)); return false; },
+  reset: () => { if (!confirm('Démarrer une nouvelle session ? Pensez à exporter les fiches avant.')) return false; S = blank(); },
+  pexport: b => { exportPc(pcOf(b)); return false; },
+  pdel: b => { const p = pcOf(b); if (!confirm('Retirer « ' + nm(p) + ' » de la session ?')) return false; S.persos.splice(S.persos.indexOf(p), 1); },
+  dec: b => adjust(pcOf(b), +b.dataset.i, -(+ui.amt || 1)),
+  inc: b => adjust(pcOf(b), +b.dataset.i, +(+ui.amt || 1)),
+  edel: b => { const p = pcOf(b), e = p.effets.splice(+b.dataset.i, 1)[0]; log(`${nm(p)} : « ${e.n} » retiré`, [p.id]); },
+  selall: () => S.persos.forEach(p => p._sel = true),
+  selnone: () => S.persos.forEach(p => p._sel = false),
+  gdmg: () => { if (!ui.track) return false; sel().forEach(p => { const i = p.tracks.findIndex(t => t.n === ui.track); if (i >= 0) adjust(p, i, -(+ui.amt || 1)); }); },
+  gheal: () => { if (!ui.track) return false; sel().forEach(p => { const i = p.tracks.findIndex(t => t.n === ui.track); if (i >= 0) adjust(p, i, +(+ui.amt || 1)); }); },
+  gfx: () => { if (!ui.eName.trim()) { E.toast('Donnez un nom à l\'effet'); return false; } sel().forEach(p => addEffect(p, { type: ui.eType, n: ui.eName.trim(), note: '', rounds: +ui.eRounds || 0 })); ui.eName = ''; },
+  gloot: () => { if (!ui.loot.trim()) { E.toast('Indiquez le butin'); return false; } sel().forEach(p => giveLoot(p, ui.loot.trim())); ui.loot = ''; },
+  lootroll: () => { E.roll('poches-malfrat', E.makeRng(E.newSeed())).then(r => { ui.loot = r.text; draw(); }); return false; },
+  advclear: () => { S.adversaires = []; },
+  advdec: b => { const a = S.adversaires[+b.closest('[data-adv]').dataset.adv]; a.hp = Math.max(0, a.hp - (+ui.amt || 1)); log(`${a.nom} : PV → ${a.hp}`); },
+  advinc: b => { const a = S.adversaires[+b.closest('[data-adv]').dataset.adv]; a.hp = Math.min(a.max, a.hp + (+ui.amt || 1)); log(`${a.nom} : PV → ${a.hp}`); },
+  logadd: () => { if (!ui.logTxt.trim()) return false; log(ui.logTxt.trim(), sel().map(p => p.id)); ui.logTxt = ''; },
+  logclear: () => { if (!confirm('Vider le journal de la session ? (les journaux des fiches restent)')) return false; S.log = []; }
+};
+document.addEventListener('click', e => {
+  const b = e.target.closest('button[data-act]'); if (!b || !ACT[b.dataset.act]) return;
+  if (ACT[b.dataset.act](b) !== false) { save(); draw(); }
+});
+document.addEventListener('submit', e => {
+  if (e.target.id !== 'advForm') return; e.preventDefault();
+  if (!ui.advName.trim()) return;
+  const hp = Math.max(1, +ui.advHp || 1); S.adversaires.push({ nom: ui.advName.trim(), hp, max: hp }); log('Adversaire : ' + ui.advName.trim() + ' (' + hp + ' PV)'); ui.advName = ''; save(); draw();
+});
+document.addEventListener('input', e => {                       // saisie : pas de redessin pour garder le focus
+  const t = e.target, a = t.dataset.act; if (!a) return;
+  if (['amt', 'eName', 'eRounds', 'loot', 'advName', 'advHp', 'logTxt'].includes(a)) ui[a] = t.value;
+  else if (a === 'sname') { S.nom = t.value; save(); }
+  else if (a === 'sdate') { S.date = t.value; save(); }
+  else if (a === 'inv') { const p = pcOf(t); p.inventaire = t.value; p.maj = nowIso(); save(); }
+  else if (a === 'mj') { pcOf(t)._mj = t.value; save(); }
+});
+document.addEventListener('change', e => {
+  const t = e.target, a = t.dataset.act;
+  if (t.id === 'imp') { importFiles(t.files); t.value = ''; return; }
+  if (!a) return;
+  if (a === 'sel') { pcOf(t)._sel = t.checked; save(); draw(); }
+  else if (a === 'track') ui.track = t.value;
+  else if (a === 'eType') ui.eType = t.value;
+  else if (a === 'stat') { const p = pcOf(t), s = p.stats[+t.dataset.i], v = parseInt(t.value) || 0; if (v !== s.v) { log(`${nm(p)} : ${s.n} ${s.v} → ${v}`, [p.id]); s.v = v; } save(); draw(); }
+});
+draw();
+})();
+</script>
+</body>
+</html>

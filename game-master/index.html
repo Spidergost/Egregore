@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Maître du jeu – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Espace maître du jeu</h1>
+  <p class="lead">De quoi préparer vite, improviser sans stress et garder trace de la campagne.</p>
+
+  <div class="grid">
+    <a class="tile" href="session.html"><span class="ico">📋</span><h2>Session de jeu</h2><p>Chargez les fiches de vos joueurs, suivez jauges, bonus, malus et butin, puis rendez-leur la version à jour.</p></a>
+    <a class="tile" href="atelier.html"><span class="ico">🛠️</span><h2>Atelier de MJ</h2><p>Dés, générateurs de PNJ, auberges, villages, quêtes et salles, noms, butin, tables perso, suivi de combat et carnet.</p></a>
+    <a class="tile" href="../commun/tables.html?cat=mj"><span class="ico">🎲</span><h2>Tirages partageables</h2><p>Fiches express (PNJ, auberge, village, quête, salle) et tables de rencontres avec graine.</p></a>
+    <a class="tile" href="../templates/?cat=mj"><span class="ico">📄</span><h2>Templates MJ</h2><p>Préparation de session, scénario, PNJ, lieu, faction, compte rendu.</p></a>
+  </div>
+
+  <section class="card">
+    <h2>🎬 Tirage rapide</h2>
+    <p class="hint" style="margin-top:-.3rem">Une accroche pour lancer ou relancer une scène.</p>
+    <div class="out" id="hook">Chargement…</div>
+    <div class="row"><button class="btn primary" id="again">🎲 Une autre</button><button class="btn" id="share">🔗 Lien</button></div>
+  </section>
+</div>
+</main>
+<script>
+(async () => {
+  const E = Egregore; E.mount('mj');
+  let seed = E.getSeed();
+  const out = document.getElementById('hook');
+  async function go() {
+    try { out.textContent = (await E.roll('accroches', E.makeRng(seed))).text; }
+    catch (e) { out.textContent = 'Les tirages demandent un serveur web (GitHub Pages ou « python -m http.server »).'; }
+  }
+  document.getElementById('again').onclick = () => { seed = E.newSeed(); go(); };
+  document.getElementById('share').onclick = () => E.copy(E.setParams({ seed }), 'Lien copié');
+  go();
+})();
+</script>
+</body>
+</html>
