@@ -1,0 +1,25 @@
+{
+  "id": "meteo",
+  "titre": "Météo du jour",
+  "cat": "commun",
+  "desc": "Pondérée : les journées calmes sont plus fréquentes.",
+  "entrees": [
+    {
+      "t": "Ciel dégagé, température douce",
+      "w": 3
+    },
+    {
+      "t": "Nuages et vent frais",
+      "w": 2
+    },
+    {
+      "t": "Bruine persistante",
+      "w": 2
+    },
+    "Brouillard épais le matin",
+    "Orage violent en fin de journée",
+    "Chaleur écrasante",
+    "Gel et neige fondue",
+    "Tempête : on s'abrite ou on s'expose"
+  ]
+}

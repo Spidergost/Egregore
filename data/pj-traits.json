@@ -1,0 +1,24 @@
+{
+  "id": "pj-traits",
+  "titre": "Traits de caractère de PJ",
+  "cat": "joueur",
+  "desc": "Un trait principal à jouer.",
+  "entrees": [
+    "Curieux jusqu'à l'imprudence",
+    "Loyal envers ses amis, méfiant envers le reste",
+    "Toujours un mot d'esprit en réserve",
+    "Calme, même quand tout brûle",
+    "Généreux, quitte à s'oublier",
+    "Têtu comme une mule",
+    "Rêveur, souvent ailleurs",
+    "Pragmatique, presque froid",
+    "Sincère jusqu'à la gaffe",
+    "Protecteur envers les plus faibles",
+    "Ambitieux sans le cacher",
+    "Pieux à sa manière",
+    "Bavard, surtout quand il est nerveux",
+    "Observateur, toujours le dos au mur",
+    "Joyeux, malgré tout",
+    "Méthodique, obsédé par les listes"
+  ]
+}

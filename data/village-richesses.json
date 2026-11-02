@@ -1,0 +1,14 @@
+{
+  "id": "village-richesses",
+  "titre": "Richesses de village",
+  "cat": "mj",
+  "desc": "Ce dont on vit.",
+  "entrees": [
+    "Une mine d'étain",
+    "L'élevage de chevaux",
+    "Un lieu de pèlerinage",
+    "La pêche",
+    "Les vignobles",
+    "Les forges"
+  ]
+}

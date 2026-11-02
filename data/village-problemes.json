@@ -1,0 +1,15 @@
+{
+  "id": "village-problemes",
+  "titre": "Problèmes de village",
+  "cat": "mj",
+  "desc": "Ce qui ne va pas (propositions).",
+  "entrees": [
+    "les récoltes pourrissent sur pied",
+    "des gens disparaissent à la nuit tombée",
+    "des brigands rançonnent la route",
+    "une épidémie inexpliquée frappe les familles",
+    "une querelle de succession divise les notables",
+    "un monstre rôde dans la forêt",
+    "les impôts sont devenus excessifs"
+  ]
+}

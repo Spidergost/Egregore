@@ -1,0 +1,22 @@
+{
+  "id": "rumeurs-taverne",
+  "titre": "Rumeurs de taverne",
+  "cat": "mj",
+  "desc": "Vraies, fausses ou trompeuses : à vous de trancher.",
+  "entrees": [
+    "On dit que le meunier a vu quelque chose dans la rivière",
+    "Le prévôt aurait des dettes de jeu",
+    "Une caravane n'est jamais arrivée de la capitale",
+    "Le vieux puits murmure la nuit",
+    "Un étranger paie tout en pièces d'un royaume disparu",
+    "La fille du forgeron a fugué avec un ménestrel",
+    "Les gardes ferment les yeux sur la contrebande",
+    "Une bête rôde près du cimetière",
+    "Le prêtre brûle des papiers en cachette",
+    "Quelqu'un cherche des aventuriers, discrètement",
+    "Un trésor serait caché sous l'ancien moulin",
+    "Le seigneur local ne sort plus de son château",
+    "Des lumières étranges dansent dans les marais",
+    "La milice recrute en secret"
+  ]
+}

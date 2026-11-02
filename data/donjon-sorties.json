@@ -1,0 +1,13 @@
+{
+  "id": "donjon-sorties",
+  "titre": "Sorties de salle",
+  "cat": "mj",
+  "desc": "Comment en sortir.",
+  "entrees": [
+    "Porte verrouillée",
+    "Escalier descendant",
+    "Passage secret",
+    "Puits profond",
+    "Porte gardée"
+  ]
+}

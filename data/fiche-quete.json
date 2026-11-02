@@ -1,0 +1,40 @@
+{
+  "id": "fiche-quete",
+  "titre": "Quête express",
+  "cat": "mj",
+  "desc": "Une mission avec obstacle, antagoniste et rebondissement.",
+  "champs": [
+    {
+      "k": "Commanditaire",
+      "t": "{@quete-commanditaires}"
+    },
+    {
+      "k": "Mission",
+      "t": "{@quete-objectifs}"
+    },
+    {
+      "k": "Lieu",
+      "t": "{@quete-lieux}"
+    },
+    {
+      "k": "Obstacle",
+      "t": "{@quete-obstacles}"
+    },
+    {
+      "k": "Antagoniste",
+      "t": "{@quete-antagonistes}"
+    },
+    {
+      "k": "Rebondissement",
+      "t": "{@quete-rebondissements}"
+    },
+    {
+      "k": "Récompense",
+      "t": "{@quete-recompenses}"
+    },
+    {
+      "k": "Échéance",
+      "t": "{@quete-echeances}"
+    }
+  ]
+}

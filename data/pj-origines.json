@@ -1,0 +1,24 @@
+{
+  "id": "pj-origines",
+  "titre": "Origines de PJ",
+  "cat": "joueur",
+  "desc": "D'où vient le personnage ?",
+  "entrees": [
+    "Enfant d'une famille de bateliers, habitué aux fleuves",
+    "Ancien apprenti d'un maître disparu sans explication",
+    "Déserteur d'une armée dont plus personne ne parle",
+    "Élevé dans un temple, sans jamais y avoir cru",
+    "Héritier d'une boutique en faillite",
+    "Fils ou fille de ménestrels itinérants",
+    "Rescapé d'un village rayé de la carte",
+    "Ancien domestique d'une grande maison, qui en connaît les secrets",
+    "Orphelin recueilli par une compagnie de marchands",
+    "Étudiant renvoyé d'une académie réputée",
+    "Ancien garde, congédié pour avoir désobéi",
+    "Enfant des rues devenu messager",
+    "Cadet d'une famille noble sans terres",
+    "Ermite revenu parmi les gens",
+    "Ancien prisonnier gracié pour une raison obscure",
+    "Né sur la route, sans jamais avoir eu de maison"
+  ]
+}

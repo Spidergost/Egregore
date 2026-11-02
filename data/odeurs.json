@@ -1,0 +1,20 @@
+{
+  "id": "odeurs",
+  "titre": "Odeurs et bruits",
+  "cat": "commun",
+  "desc": "Un détail sensoriel pour donner du relief à une scène.",
+  "entrees": [
+    "Une odeur de pain chaud qui n'a rien à faire ici",
+    "Un goutte-à-goutte régulier, quelque part derrière les murs",
+    "Une fumée âcre, comme du cheveu brûlé",
+    "Un chant d'enfant, très lointain",
+    "Une odeur de cire et d'encens",
+    "Des coups sourds, comme on frappe une porte… de l'intérieur",
+    "Une senteur de lavande qui masque autre chose",
+    "Un silence si complet qu'on entend son propre sang",
+    "Le grincement d'une enseigne sans vent",
+    "De la sciure fraîche sur le sol",
+    "Un parfum de pluie alors que le ciel est sec",
+    "Des rires étouffés derrière une cloison"
+  ]
+}

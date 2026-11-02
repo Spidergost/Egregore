@@ -1,0 +1,20 @@
+{
+  "id": "rencontres-foret",
+  "titre": "Rencontres en forêt",
+  "cat": "mj",
+  "desc": "Rencontre en voyage.",
+  "entrees": [
+    "Un cerf blanc observe les voyageurs puis disparaît",
+    "{1d4+1} loups affamés suivent la piste",
+    "Un bûcheron blessé appelle à l'aide",
+    "Un camp de {2d4} brigands au bord du chemin",
+    "Un autel moussu où quelqu'un a laissé une offrande récente",
+    "Un voyageur égaré qui semble venir d'une autre époque",
+    "Des sangliers en colère",
+    "Un ermite qui offre le gîte… et des conseils inquiétants",
+    "Un arbre creux contenant une cache oubliée",
+    "Des empreintes immenses, encore fraîches",
+    "Un cortège de pèlerins en route vers un sanctuaire",
+    "Une brume étrange où les sons se déforment"
+  ]
+}

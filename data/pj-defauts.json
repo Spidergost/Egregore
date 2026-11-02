@@ -1,0 +1,22 @@
+{
+  "id": "pj-defauts",
+  "titre": "Défauts de PJ",
+  "cat": "joueur",
+  "desc": "Ce qui complique la vie du personnage (et celle de la table).",
+  "entrees": [
+    "Ne sait jamais dire non",
+    "Rancunier : n'oublie rien",
+    "Ment par réflexe, même sans raison",
+    "Joueur invétéré",
+    "Ne supporte pas qu'on lui donne des ordres",
+    "Trop confiant : sous-estime les dangers",
+    "Avare, compte chaque pièce",
+    "Fuit les conflits avant qu'ils n'éclatent",
+    "Jaloux des réussites des autres",
+    "Cache une dette importante",
+    "Incapable de garder un secret",
+    "Orgueilleux : ne demande jamais d'aide",
+    "Superstitieux au point de refuser certaines routes",
+    "Impulsif : agit d'abord, réfléchit après"
+  ]
+}

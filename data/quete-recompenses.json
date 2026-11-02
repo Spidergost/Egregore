@@ -1,0 +1,14 @@
+{
+  "id": "quete-recompenses",
+  "titre": "Récompenses",
+  "cat": "mj",
+  "desc": "Au-delà de l'argent.",
+  "entrees": [
+    "une bourse bien garnie",
+    "un titre ou des terres",
+    "une faveur à encaisser",
+    "un objet magique",
+    "une information cruciale",
+    "un allié durable"
+  ]
+}

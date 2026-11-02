@@ -1,0 +1,14 @@
+{
+  "id": "donjon-indices",
+  "titre": "Indices de salle",
+  "cat": "mj",
+  "desc": "Un fil à tirer pour la suite.",
+  "entrees": [
+    "Le journal d'un explorateur",
+    "Une inscription dans une langue oubliée",
+    "Des traces de pas fraîches",
+    "Une carte partielle",
+    "Un symbole répété partout",
+    "Une odeur de brûlé suspecte"
+  ]
+}

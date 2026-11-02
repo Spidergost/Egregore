@@ -1,0 +1,28 @@
+{
+  "id": "surnoms",
+  "titre": "Surnoms",
+  "cat": "commun",
+  "desc": "À accoler à un nom : « , dit … ».",
+  "entrees": [
+    "le Borgne",
+    "Main-de-Fer",
+    "la Corneille",
+    "Pied-Léger",
+    "l'Ancien",
+    "Sans-Peur",
+    "la Rousse",
+    "Cœur-de-Pierre",
+    "le Silencieux",
+    "Œil-de-Lynx",
+    "Lame-Grise",
+    "le Chanceux",
+    "Barbe-Noire",
+    "la Louve",
+    "Trois-Doigts",
+    "le Boiteux",
+    "la Pie",
+    "Gros-Jean",
+    "Mauvais-Œil",
+    "le Pâle"
+  ]
+}

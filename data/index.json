@@ -1,0 +1,509 @@
+{
+  "version": 1,
+  "tables": [
+    {
+      "id": "lieu-ambiances",
+      "titre": "Ambiances de lieu",
+      "cat": "commun",
+      "type": "table",
+      "desc": "Une impression dominante à poser sur n'importe quel endroit.",
+      "brique": false,
+      "n": 10
+    },
+    {
+      "id": "meteo",
+      "titre": "Météo du jour",
+      "cat": "commun",
+      "type": "table",
+      "desc": "Pondérée : les journées calmes sont plus fréquentes.",
+      "brique": false,
+      "n": 8
+    },
+    {
+      "id": "odeurs",
+      "titre": "Odeurs et bruits",
+      "cat": "commun",
+      "type": "table",
+      "desc": "Un détail sensoriel pour donner du relief à une scène.",
+      "brique": false,
+      "n": 12
+    },
+    {
+      "id": "noms-famille",
+      "titre": "Noms de famille",
+      "cat": "commun",
+      "type": "table",
+      "desc": "Noms de famille et particules.",
+      "brique": true,
+      "n": 30
+    },
+    {
+      "id": "prenoms",
+      "titre": "Prénoms (médiéval)",
+      "cat": "commun",
+      "type": "table",
+      "desc": "Prénoms d'inspiration médiévale, mixtes.",
+      "brique": true,
+      "n": 40
+    },
+    {
+      "id": "surnoms",
+      "titre": "Surnoms",
+      "cat": "commun",
+      "type": "table",
+      "desc": "À accoler à un nom : « , dit … ».",
+      "brique": true,
+      "n": 20
+    },
+    {
+      "id": "fiche-pj",
+      "titre": "Concept de personnage",
+      "cat": "joueur",
+      "type": "fiche",
+      "desc": "Un point de départ complet : à adapter à n'importe quel système.",
+      "brique": false,
+      "n": 9
+    },
+    {
+      "id": "pj-defauts",
+      "titre": "Défauts de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Ce qui complique la vie du personnage (et celle de la table).",
+      "brique": false,
+      "n": 14
+    },
+    {
+      "id": "pj-liens",
+      "titre": "Liens et attaches de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Quelqu'un ou quelque chose qui rattache le personnage au monde.",
+      "brique": false,
+      "n": 10
+    },
+    {
+      "id": "pj-motivations",
+      "titre": "Motivations de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Ce qui pousse le personnage à partir à l'aventure.",
+      "brique": false,
+      "n": 12
+    },
+    {
+      "id": "pj-objets",
+      "titre": "Objets personnels de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Un petit objet qui raconte quelque chose.",
+      "brique": false,
+      "n": 14
+    },
+    {
+      "id": "pj-origines",
+      "titre": "Origines de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "D'où vient le personnage ?",
+      "brique": false,
+      "n": 16
+    },
+    {
+      "id": "pj-peurs",
+      "titre": "Peurs de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Ce qui fait trembler le personnage, même s'il ne l'avoue pas.",
+      "brique": false,
+      "n": 10
+    },
+    {
+      "id": "pj-traits",
+      "titre": "Traits de caractère de PJ",
+      "cat": "joueur",
+      "type": "table",
+      "desc": "Un trait principal à jouer.",
+      "brique": false,
+      "n": 16
+    },
+    {
+      "id": "fiche-auberge",
+      "titre": "Auberge express",
+      "cat": "mj",
+      "type": "fiche",
+      "desc": "Une auberge complète avec tenancier, rumeur et petite bizarrerie.",
+      "brique": false,
+      "n": 7
+    },
+    {
+      "id": "fiche-pnj",
+      "titre": "PNJ express",
+      "cat": "mj",
+      "type": "fiche",
+      "desc": "Un PNJ jouable en deux minutes.",
+      "brique": false,
+      "n": 8
+    },
+    {
+      "id": "fiche-quete",
+      "titre": "Quête express",
+      "cat": "mj",
+      "type": "fiche",
+      "desc": "Une mission avec obstacle, antagoniste et rebondissement.",
+      "brique": false,
+      "n": 8
+    },
+    {
+      "id": "fiche-salle",
+      "titre": "Salle de donjon",
+      "cat": "mj",
+      "type": "fiche",
+      "desc": "Une salle prête à être explorée.",
+      "brique": false,
+      "n": 7
+    },
+    {
+      "id": "fiche-village",
+      "titre": "Village express",
+      "cat": "mj",
+      "type": "fiche",
+      "desc": "Un lieu habité avec son problème et son secret.",
+      "brique": false,
+      "n": 8
+    },
+    {
+      "id": "accroches",
+      "titre": "Accroches de scénario",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Une phrase qui lance une aventure. Idéal pour improviser ou pour un tirage quotidien.",
+      "brique": false,
+      "n": 6
+    },
+    {
+      "id": "complications",
+      "titre": "Complications de scène",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Quand une scène devient trop facile ou s'enlise.",
+      "brique": false,
+      "n": 10
+    },
+    {
+      "id": "poches-malfrat",
+      "titre": "Dans les poches d'un malfrat",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Fouille express.",
+      "brique": false,
+      "n": 12
+    },
+    {
+      "id": "rencontres-foret",
+      "titre": "Rencontres en forêt",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Rencontre en voyage.",
+      "brique": false,
+      "n": 12
+    },
+    {
+      "id": "rumeurs-taverne",
+      "titre": "Rumeurs de taverne",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Vraies, fausses ou trompeuses : à vous de trancher.",
+      "brique": false,
+      "n": 14
+    },
+    {
+      "id": "quete-antagonistes",
+      "titre": "Antagonistes",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Qui s'y oppose.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "pnj-apparences",
+      "titre": "Apparences",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Un détail physique marquant.",
+      "brique": true,
+      "n": 12
+    },
+    {
+      "id": "donjon-salles",
+      "titre": "Aspects de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "L'architecture et le décor.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "pnj-attitudes",
+      "titre": "Attitudes envers les PJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Première impression face aux personnages.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "auberge-clientele",
+      "titre": "Clientèle d'auberge",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Qui fréquente l'endroit.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "quete-commanditaires",
+      "titre": "Commanditaires",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Qui confie la mission.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "donjon-dangers",
+      "titre": "Dangers de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Pièges et complications.",
+      "brique": true,
+      "n": 7
+    },
+    {
+      "id": "village-dirigeants",
+      "titre": "Dirigeants de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Qui commande.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "donjon-indices",
+      "titre": "Indices de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Un fil à tirer pour la suite.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "quete-lieux",
+      "titre": "Lieux de quête",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Précédés d'un article indéfini : « la piste mène à … ».",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "pnj-manies",
+      "titre": "Manies et voix de PNJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "De quoi rendre un PNJ mémorable à l'oral.",
+      "brique": true,
+      "n": 11
+    },
+    {
+      "id": "pnj-motivations",
+      "titre": "Motivations de PNJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce que veut le PNJ.",
+      "brique": true,
+      "n": 11
+    },
+    {
+      "id": "pnj-metiers",
+      "titre": "Métiers de PNJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Un métier ou une occupation.",
+      "brique": true,
+      "n": 22
+    },
+    {
+      "id": "auberge-noms",
+      "titre": "Noms d'auberge",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Enseignes prêtes à l'emploi.",
+      "brique": true,
+      "n": 28
+    },
+    {
+      "id": "village-noms",
+      "titre": "Noms de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Noms à consonance française.",
+      "brique": true,
+      "n": 24
+    },
+    {
+      "id": "quete-objectifs",
+      "titre": "Objectifs",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce qu'il faut accomplir (à l'infinitif).",
+      "brique": true,
+      "n": 9
+    },
+    {
+      "id": "quete-obstacles",
+      "titre": "Obstacles",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Phrases complètes.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "donjon-occupants",
+      "titre": "Occupants de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Qui (ou quoi) s'y trouve.",
+      "brique": true,
+      "n": 7
+    },
+    {
+      "id": "auberge-particularites",
+      "titre": "Particularités d'auberge",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce qui rend l'auberge mémorable.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "village-particularites",
+      "titre": "Particularités de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Un élément de décor marquant.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "village-problemes",
+      "titre": "Problèmes de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce qui ne va pas (propositions).",
+      "brique": true,
+      "n": 7
+    },
+    {
+      "id": "quete-rebondissements",
+      "titre": "Rebondissements",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Phrases complètes.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "village-richesses",
+      "titre": "Richesses de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce dont on vit.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "quete-recompenses",
+      "titre": "Récompenses",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Au-delà de l'argent.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "pnj-secrets",
+      "titre": "Secrets de PNJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce que le PNJ cache.",
+      "brique": true,
+      "n": 10
+    },
+    {
+      "id": "village-secrets",
+      "titre": "Secrets de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce que tout le monde sait… sans le dire.",
+      "brique": true,
+      "n": 5
+    },
+    {
+      "id": "donjon-sorties",
+      "titre": "Sorties de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Comment en sortir.",
+      "brique": true,
+      "n": 5
+    },
+    {
+      "id": "auberge-specialites",
+      "titre": "Spécialités d'auberge",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce qu'on y mange et boit.",
+      "brique": true,
+      "n": 8
+    },
+    {
+      "id": "village-tailles",
+      "titre": "Tailles de village",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Population indicative.",
+      "brique": true,
+      "n": 5
+    },
+    {
+      "id": "pnj-traits",
+      "titre": "Traits de PNJ",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Le caractère en un mot.",
+      "brique": true,
+      "n": 16
+    },
+    {
+      "id": "donjon-tresors",
+      "titre": "Trésors de salle",
+      "cat": "mj",
+      "type": "table",
+      "desc": "Ce que l'on peut y trouver.",
+      "brique": true,
+      "n": 6
+    },
+    {
+      "id": "quete-echeances",
+      "titre": "Échéances",
+      "cat": "mj",
+      "type": "table",
+      "desc": "La pression du temps.",
+      "brique": true,
+      "n": 4
+    }
+  ]
+}

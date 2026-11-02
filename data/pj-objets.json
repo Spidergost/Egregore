@@ -1,0 +1,22 @@
+{
+  "id": "pj-objets",
+  "titre": "Objets personnels de PJ",
+  "cat": "joueur",
+  "desc": "Un petit objet qui raconte quelque chose.",
+  "entrees": [
+    "Une montre qui avance toujours de sept minutes",
+    "Un carnet dont les premières pages ont été arrachées",
+    "Une clé qui n'ouvre rien de connu",
+    "Une pièce étrangère, percée d'un trou",
+    "Un petit couteau de cuisine très bien entretenu",
+    "Un foulard brodé aux initiales d'un inconnu",
+    "Un dé d'os, usé à force d'être lancé",
+    "Une fiole vide qui sent encore la violette",
+    "Une médaille militaire sans régiment",
+    "Une lettre jamais ouverte",
+    "Une flûte cassée, réparée avec de la cire",
+    "Un portrait miniature au visage effacé",
+    "Une graine enveloppée de tissu",
+    "Un briquet qui marche une fois sur deux"
+  ]
+}

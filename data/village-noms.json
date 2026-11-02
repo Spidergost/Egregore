@@ -1,0 +1,32 @@
+{
+  "id": "village-noms",
+  "titre": "Noms de village",
+  "cat": "mj",
+  "desc": "Noms à consonance française.",
+  "entrees": [
+    "Montclair",
+    "Valfroid",
+    "Pontnoir",
+    "Boisbrume",
+    "Rochegué",
+    "Fontainemont",
+    "Hautvert",
+    "Clairfort",
+    "Noirlac",
+    "Vieilombre",
+    "Corpierre",
+    "Aigueaube",
+    "Montvent",
+    "Valgué",
+    "Pontvert",
+    "Saint-Aubin-des-Brumes",
+    "Saint-Médard-du-Gué",
+    "Saint-Gilles-la-Forêt",
+    "Saint-Léger-sur-Marne",
+    "Saint-Ouen-des-Aulnes",
+    "Boisfort",
+    "Roclair",
+    "Fontnoire",
+    "Clairgué"
+  ]
+}

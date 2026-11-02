@@ -1,0 +1,16 @@
+{
+  "id": "quete-commanditaires",
+  "titre": "Commanditaires",
+  "cat": "mj",
+  "desc": "Qui confie la mission.",
+  "entrees": [
+    "un noble inquiet pour sa réputation",
+    "une guilde de marchands",
+    "un temple",
+    "un vieil aventurier blessé",
+    "un enfant sans le sou mais désespéré",
+    "un représentant de la couronne",
+    "un inconnu masqué",
+    "un ancien rival repenti"
+  ]
+}

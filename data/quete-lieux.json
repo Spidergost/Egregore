@@ -1,0 +1,16 @@
+{
+  "id": "quete-lieux",
+  "titre": "Lieux de quête",
+  "cat": "mj",
+  "desc": "Précédés d'un article indéfini : « la piste mène à … ».",
+  "entrees": [
+    "des ruines à moitié englouties",
+    "une forêt où la brume ne se lève jamais",
+    "une mine abandonnée",
+    "un château isolé",
+    "un marais",
+    "un col de montagne enneigé",
+    "une cité en proie à l'émeute",
+    "un temple oublié"
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "id": "fiche-pj",
+  "titre": "Concept de personnage",
+  "cat": "joueur",
+  "desc": "Un point de départ complet : à adapter à n'importe quel système.",
+  "champs": [
+    {
+      "k": "Nom",
+      "t": "{@prenoms} {@noms-famille}"
+    },
+    {
+      "k": "Origine",
+      "t": "{@pj-origines}"
+    },
+    {
+      "k": "Trait",
+      "t": "{@pj-traits}"
+    },
+    {
+      "k": "Défaut",
+      "t": "{@pj-defauts}"
+    },
+    {
+      "k": "Motivation",
+      "t": "{@pj-motivations}"
+    },
+    {
+      "k": "Lien",
+      "t": "{@pj-liens}"
+    },
+    {
+      "k": "Peur",
+      "t": "{@pj-peurs}"
+    },
+    {
+      "k": "Objet personnel",
+      "t": "{@pj-objets}"
+    },
+    {
+      "k": "Apparence",
+      "t": "{@pnj-apparences}"
+    }
+  ]
+}

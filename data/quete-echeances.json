@@ -1,0 +1,12 @@
+{
+  "id": "quete-echeances",
+  "titre": "Échéances",
+  "cat": "mj",
+  "desc": "La pression du temps.",
+  "entrees": [
+    "avant la prochaine pleine lune",
+    "dans trois jours",
+    "immédiate : il reste quelques heures",
+    "aucune limite… en apparence"
+  ]
+}

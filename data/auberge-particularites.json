@@ -1,0 +1,16 @@
+{
+  "id": "auberge-particularites",
+  "titre": "Particularités d'auberge",
+  "cat": "mj",
+  "desc": "Ce qui rend l'auberge mémorable.",
+  "entrees": [
+    "Un fantôme hante la cave",
+    "Un tableau dont les yeux semblent suivre les clients",
+    "Un jeu de dés truqué où tout le monde perd",
+    "Un passage secret derrière le comptoir",
+    "Une chambre toujours réservée par un inconnu",
+    "Un chat qui semble comprendre les conversations",
+    "Un toit qui fuit, et on parie sur l'endroit",
+    "Un concours de chant chaque soir"
+  ]
+}

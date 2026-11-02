@@ -1,0 +1,15 @@
+{
+  "id": "donjon-dangers",
+  "titre": "Dangers de salle",
+  "cat": "mj",
+  "desc": "Pièges et complications.",
+  "entrees": [
+    "Dalles piégées",
+    "Gaz soporifique",
+    "Herse qui s'abat derrière les intrus",
+    "Statue qui s'anime",
+    "Glyphes explosifs",
+    "Plancher instable",
+    "Aucun danger visible"
+  ]
+}

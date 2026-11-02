@@ -1,0 +1,24 @@
+{
+  "id": "pnj-traits",
+  "titre": "Traits de PNJ",
+  "cat": "mj",
+  "desc": "Le caractère en un mot.",
+  "entrees": [
+    "Curieux",
+    "Méfiant",
+    "Jovial",
+    "Cupide",
+    "Loyal jusqu'à l'excès",
+    "Lâche",
+    "Pieux",
+    "Sarcastique",
+    "Mélancolique",
+    "Bavard",
+    "Hautain",
+    "Naïf",
+    "Colérique",
+    "Généreux",
+    "Obsédé par les détails",
+    "Superstitieux"
+  ]
+}

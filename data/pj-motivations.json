@@ -1,0 +1,20 @@
+{
+  "id": "pj-motivations",
+  "titre": "Motivations de PJ",
+  "cat": "joueur",
+  "desc": "Ce qui pousse le personnage à partir à l'aventure.",
+  "entrees": [
+    "Rembourser une dette écrasante",
+    "Retrouver un proche disparu",
+    "Gagner enfin le respect de sa famille",
+    "Comprendre ce qui est arrivé à son village",
+    "Voir ce qu'il y a au-delà de la dernière carte",
+    "Se faire un nom que l'on murmure avec crainte ou admiration",
+    "Faire amende honorable pour une faute ancienne",
+    "Trouver un endroit où se sentir chez soi",
+    "Percer un savoir que l'on dit interdit",
+    "Protéger quelqu'un qui ne le sait pas",
+    "Gagner assez d'argent pour s'arrêter",
+    "Prouver qu'un jugement était injuste"
+  ]
+}

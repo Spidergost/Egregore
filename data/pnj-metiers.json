@@ -1,0 +1,30 @@
+{
+  "id": "pnj-metiers",
+  "titre": "Métiers de PNJ",
+  "cat": "mj",
+  "desc": "Un métier ou une occupation.",
+  "entrees": [
+    "Forgeron",
+    "Aubergiste",
+    "Garde de la ville",
+    "Marchand ambulant",
+    "Herboriste",
+    "Érudit excentrique",
+    "Mercenaire à la retraite",
+    "Prêtre de village",
+    "Contrebandier",
+    "Ménestrel",
+    "Bûcheron",
+    "Noble désargenté",
+    "Apprenti magicien",
+    "Chasseur de primes",
+    "Guérisseuse",
+    "Bibliothécaire",
+    "Pêcheur",
+    "Voleur repenti",
+    "Cartographe",
+    "Éleveur de chevaux",
+    "Fossoyeur",
+    "Alchimiste"
+  ]
+}

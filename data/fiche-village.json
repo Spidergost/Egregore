@@ -1,0 +1,40 @@
+{
+  "id": "fiche-village",
+  "titre": "Village express",
+  "cat": "mj",
+  "desc": "Un lieu habité avec son problème et son secret.",
+  "champs": [
+    {
+      "k": "Nom",
+      "t": "{@village-noms}"
+    },
+    {
+      "k": "Taille",
+      "t": "{@village-tailles}"
+    },
+    {
+      "k": "Ambiance",
+      "t": "{@lieu-ambiances}"
+    },
+    {
+      "k": "Particularité",
+      "t": "{@village-particularites}"
+    },
+    {
+      "k": "Dirigeant",
+      "t": "{@village-dirigeants}"
+    },
+    {
+      "k": "Richesse",
+      "t": "{@village-richesses}"
+    },
+    {
+      "k": "Problème",
+      "t": "{@village-problemes}"
+    },
+    {
+      "k": "Secret",
+      "t": "{@village-secrets}"
+    }
+  ]
+}

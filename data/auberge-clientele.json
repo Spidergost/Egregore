@@ -1,0 +1,16 @@
+{
+  "id": "auberge-clientele",
+  "titre": "Clientèle d'auberge",
+  "cat": "mj",
+  "desc": "Qui fréquente l'endroit.",
+  "entrees": [
+    "Caravaniers et muletiers",
+    "Soldats en permission",
+    "Pèlerins fatigués",
+    "Mineurs couverts de poussière",
+    "Nobles incognito",
+    "Contrebandiers",
+    "Étudiants bruyants",
+    "Mercenaires en quête de contrat"
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "fiche-auberge",
+  "titre": "Auberge express",
+  "cat": "mj",
+  "desc": "Une auberge complète avec tenancier, rumeur et petite bizarrerie.",
+  "champs": [
+    {
+      "k": "Nom",
+      "t": "{@auberge-noms}"
+    },
+    {
+      "k": "Tenancier",
+      "t": "{@prenoms} {@noms-famille}, {@pnj-traits}"
+    },
+    {
+      "k": "Ambiance",
+      "t": "{@lieu-ambiances}"
+    },
+    {
+      "k": "Spécialité",
+      "t": "{@auberge-specialites}"
+    },
+    {
+      "k": "Clientèle",
+      "t": "{@auberge-clientele}"
+    },
+    {
+      "k": "Rumeur",
+      "t": "{@rumeurs-taverne}"
+    },
+    {
+      "k": "Particularité",
+      "t": "{@auberge-particularites}"
+    }
+  ]
+}

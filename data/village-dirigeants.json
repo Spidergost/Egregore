@@ -1,0 +1,14 @@
+{
+  "id": "village-dirigeants",
+  "titre": "Dirigeants de village",
+  "cat": "mj",
+  "desc": "Qui commande.",
+  "entrees": [
+    "Un maire vieillissant, dépassé",
+    "Un seigneur local tyrannique",
+    "Un conseil d'anciens querelleur",
+    "Une prêtresse respectée",
+    "Un capitaine de la garde autoritaire",
+    "Une guilde de marchands"
+  ]
+}

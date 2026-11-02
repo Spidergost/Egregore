@@ -1,0 +1,14 @@
+{
+  "id": "donjon-tresors",
+  "titre": "Trésors de salle",
+  "cat": "mj",
+  "desc": "Ce que l'on peut y trouver.",
+  "entrees": [
+    "Un coffre verrouillé",
+    "Quelques pièces cachées dans un crâne",
+    "Une arme ancienne",
+    "Un livre aux pages collées",
+    "Rien, mais une inscription",
+    "Des gemmes dans une niche"
+  ]
+}

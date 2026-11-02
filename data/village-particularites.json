@@ -1,0 +1,14 @@
+{
+  "id": "village-particularites",
+  "titre": "Particularités de village",
+  "cat": "mj",
+  "desc": "Un élément de décor marquant.",
+  "entrees": [
+    "Un grand arbre sacré trône au centre",
+    "Un pont fortifié enjambe la rivière",
+    "Aucune porte n'y ferme à clé",
+    "Une cloche sonne seule à minuit",
+    "Les maisons sont bâties sur pilotis",
+    "Une ancienne muraille encercle les champs"
+  ]
+}

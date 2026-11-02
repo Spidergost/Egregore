@@ -1,0 +1,19 @@
+{
+  "id": "pnj-motivations",
+  "titre": "Motivations de PNJ",
+  "cat": "mj",
+  "desc": "Ce que veut le PNJ.",
+  "entrees": [
+    "Rembourser une dette écrasante",
+    "Retrouver un proche disparu",
+    "Gravir l'échelle sociale",
+    "Se venger d'un ancien associé",
+    "Protéger sa famille et son village",
+    "Percer un savoir interdit",
+    "Faire oublier son passé",
+    "Amasser de quoi s'offrir une retraite paisible",
+    "Servir une cause qu'il juge sacrée",
+    "Trouver l'amour",
+    "Prouver sa valeur à son ancien mentor"
+  ]
+}

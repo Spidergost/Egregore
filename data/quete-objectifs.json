@@ -1,0 +1,17 @@
+{
+  "id": "quete-objectifs",
+  "titre": "Objectifs",
+  "cat": "mj",
+  "desc": "Ce qu'il faut accomplir (à l'infinitif).",
+  "entrees": [
+    "retrouver un objet volé",
+    "escorter un convoi",
+    "éliminer une menace",
+    "libérer un prisonnier",
+    "enquêter sur une disparition",
+    "explorer des ruines",
+    "négocier une trêve",
+    "livrer un message sensible",
+    "détruire un artefact"
+  ]
+}

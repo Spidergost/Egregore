@@ -1,0 +1,14 @@
+{
+  "id": "accroches",
+  "titre": "Accroches de scénario",
+  "cat": "mj",
+  "desc": "Une phrase qui lance une aventure. Idéal pour improviser ou pour un tirage quotidien.",
+  "entrees": [
+    "{^@quete-commanditaires} vous charge de {@quete-objectifs}. La piste mène à {@quete-lieux}. {^@quete-obstacles}",
+    "Tout commence par une rumeur : « {@rumeurs-taverne} ». Mais {@quete-commanditaires} paie pour que vous n'enquêtiez pas.",
+    "Vous devez {@quete-objectifs}, mais {@quete-antagonistes} a une longueur d'avance. {^@quete-rebondissements}",
+    "À {@village-noms}, {@village-problemes}. Le secret : {@village-secrets}.",
+    "{^@quete-commanditaires} vous promet {@quete-recompenses}, mais il y a un hic : {@quete-obstacles}",
+    "Au bout de deux jours de marche : {@quete-lieux}. Échéance : {@quete-echeances}."
+  ]
+}

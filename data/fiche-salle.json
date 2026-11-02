@@ -1,0 +1,36 @@
+{
+  "id": "fiche-salle",
+  "titre": "Salle de donjon",
+  "cat": "mj",
+  "desc": "Une salle prête à être explorée.",
+  "champs": [
+    {
+      "k": "Aspect",
+      "t": "{@donjon-salles}"
+    },
+    {
+      "k": "Occupants",
+      "t": "{@donjon-occupants}"
+    },
+    {
+      "k": "Danger",
+      "t": "{@donjon-dangers}"
+    },
+    {
+      "k": "Trésor",
+      "t": "{@donjon-tresors}"
+    },
+    {
+      "k": "Indice",
+      "t": "{@donjon-indices}"
+    },
+    {
+      "k": "Sortie",
+      "t": "{@donjon-sorties}"
+    },
+    {
+      "k": "Sens",
+      "t": "{@odeurs}"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "pnj-attitudes",
+  "titre": "Attitudes envers les PJ",
+  "cat": "mj",
+  "desc": "Première impression face aux personnages.",
+  "entrees": [
+    "Hostile",
+    "Méfiante",
+    "Indifférente",
+    "Curieuse",
+    "Amicale",
+    "Enthousiaste",
+    "Intéressée : elle veut quelque chose",
+    "Craintive"
+  ]
+}

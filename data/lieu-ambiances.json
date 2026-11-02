@@ -1,0 +1,18 @@
+{
+  "id": "lieu-ambiances",
+  "titre": "Ambiances de lieu",
+  "cat": "commun",
+  "desc": "Une impression dominante à poser sur n'importe quel endroit.",
+  "entrees": [
+    "Bruyant et enfumé",
+    "Calme et feutré",
+    "Sinistre : les conversations s'arrêtent à votre entrée",
+    "Festif, avec des musiciens",
+    "Miteux mais chaleureux",
+    "Luxueux, beaucoup trop pour l'endroit",
+    "Bondé de voyageurs",
+    "Presque vide, et on se demande pourquoi",
+    "Humide, tout sent la pierre mouillée",
+    "Baigné d'une lumière dorée de fin de journée"
+  ]
+}

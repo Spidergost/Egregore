@@ -1,0 +1,18 @@
+{
+  "id": "pj-liens",
+  "titre": "Liens et attaches de PJ",
+  "cat": "joueur",
+  "desc": "Quelqu'un ou quelque chose qui rattache le personnage au monde.",
+  "entrees": [
+    "Doit la vie à un inconnu qu'il cherche à retrouver",
+    "Écrit chaque mois à une sœur qui ne répond jamais",
+    "Veille sur un vieux mentor de moins en moins lucide",
+    "Un rival de toujours, devenu presque un ami",
+    "A promis de ramener un objet à une famille en deuil",
+    "Est recherché par quelqu'un de puissant, pour de mauvaises raisons",
+    "Possède la moitié d'une carte, l'autre est chez un inconnu",
+    "Élève en secret l'enfant d'un ami disparu",
+    "Appartient encore à une guilde qu'il voudrait quitter",
+    "Porte le nom d'un héros dont il ne se sent pas digne"
+  ]
+}

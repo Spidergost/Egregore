@@ -1,0 +1,18 @@
+{
+  "id": "complications",
+  "titre": "Complications de scène",
+  "cat": "mj",
+  "desc": "Quand une scène devient trop facile ou s'enlise.",
+  "entrees": [
+    "Un allié change de camp",
+    "Du renfort arrive… pour l'autre camp",
+    "Le décor se dérobe (effondrement, incendie, crue)",
+    "Un objet important est perdu ou brisé",
+    "Une information capitale se révèle fausse",
+    "Un témoin s'enfuit",
+    "La garde arrive plus tôt que prévu",
+    "Quelqu'un tombe malade ou blessé",
+    "Un tiers très discret observait depuis le début",
+    "Rien ne va de travers, mais une rencontre s'annonce"
+  ]
+}

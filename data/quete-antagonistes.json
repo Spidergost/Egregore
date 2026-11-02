@@ -1,0 +1,14 @@
+{
+  "id": "quete-antagonistes",
+  "titre": "Antagonistes",
+  "cat": "mj",
+  "desc": "Qui s'y oppose.",
+  "entrees": [
+    "un seigneur ambitieux",
+    "un culte secret",
+    "une créature ancienne",
+    "un ancien allié",
+    "une bande de pillards",
+    "un sorcier obsédé"
+  ]
+}

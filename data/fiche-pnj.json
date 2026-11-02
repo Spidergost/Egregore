@@ -1,0 +1,40 @@
+{
+  "id": "fiche-pnj",
+  "titre": "PNJ express",
+  "cat": "mj",
+  "desc": "Un PNJ jouable en deux minutes.",
+  "champs": [
+    {
+      "k": "Nom",
+      "t": "{@prenoms} {@noms-famille}"
+    },
+    {
+      "k": "Rôle",
+      "t": "{@pnj-metiers}"
+    },
+    {
+      "k": "Apparence",
+      "t": "{@pnj-apparences}"
+    },
+    {
+      "k": "Caractère",
+      "t": "{@pnj-traits}"
+    },
+    {
+      "k": "Manie / voix",
+      "t": "{@pnj-manies}"
+    },
+    {
+      "k": "Motivation",
+      "t": "{@pnj-motivations}"
+    },
+    {
+      "k": "Secret",
+      "t": "{@pnj-secrets}"
+    },
+    {
+      "k": "Attitude envers les PJ",
+      "t": "{@pnj-attitudes}"
+    }
+  ]
+}

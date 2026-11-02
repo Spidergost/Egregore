@@ -1,0 +1,18 @@
+{
+  "id": "pj-peurs",
+  "titre": "Peurs de PJ",
+  "cat": "joueur",
+  "desc": "Ce qui fait trembler le personnage, même s'il ne l'avoue pas.",
+  "entrees": [
+    "L'eau profonde",
+    "Les espaces clos",
+    "Être oublié de tous",
+    "Le feu",
+    "Les foules",
+    "Décevoir quelqu'un qui compte",
+    "Les cloches, pour une raison qu'il tait",
+    "Le silence complet",
+    "Devenir comme son père ou sa mère",
+    "La nuit sans lune"
+  ]
+}
