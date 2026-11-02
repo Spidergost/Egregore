@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tables aléatoires – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Tables aléatoires</h1>
+  <p class="lead">Choisissez une table ou une fiche, tirez, puis partagez le lien : la graine garantit que tout le monde voit le même résultat.</p>
+  <div class="split">
+    <aside class="card" aria-label="Liste des tables">
+      <div class="pills" id="cats"></div>
+      <div class="tlist" id="list"></div>
+    </aside>
+    <section class="card" id="panel" aria-live="polite"><p class="hint">Chargement…</p></section>
+  </div>
+</div>
+</main>
+<script>
+(async () => {
+  const E = Egregore; E.mount('commun');
+  const CATS = [['all', 'Tout'], ['mj', 'MJ'], ['joueur', 'Joueur'], ['commun', 'Commun']];
+  const CATNAME = { mj: 'Maître du jeu', joueur: 'Joueur', commun: 'Commun' };
+  const st = { cat: E.getParam('cat') || 'all', id: E.getParam('t'), seed: E.getParam('seed') || E.newSeed(), n: Math.min(20, Math.max(1, +E.getParam('n') || 1)), res: [] };
+  if (!CATS.some(c => c[0] === st.cat)) st.cat = 'all';
+  const $ = s => document.querySelector(s);
+  let idx;
+  try { idx = (await E.loadIndex()).tables; }
+  catch (e) {
+    $('#panel').innerHTML = `<p><b>Impossible de charger les tables.</b></p><p class="hint">Ce site utilise des fichiers JSON : ouvrez-le via GitHub Pages ou un serveur local (<code>python -m http.server</code>), pas en double-cliquant sur le fichier.</p>`;
+    return;
+  }
+  if (st.id && !idx.some(t => t.id === st.id)) st.id = null;
+  if (st.id && st.cat !== 'all' && idx.find(t => t.id === st.id).cat !== st.cat) st.cat = 'all';
+
+  function drawList() {
+    $('#cats').innerHTML = CATS.map(([k, l]) => `<button aria-pressed="${st.cat === k}" data-cat="${k}">${l}</button>`).join('');
+    const shown = idx.filter(t => st.cat === 'all' || t.cat === st.cat);
+    const groups = [['Fiches et recettes', t => !t.brique], ['Briques de base', t => t.brique]];
+    $('#list').innerHTML = groups.map(([name, f]) => {
+      const items = shown.filter(f);
+      return items.length ? `<h3>${name}</h3>` + items.map(t => `<button data-id="${t.id}" aria-pressed="${t.id === st.id}">${E.esc(t.titre)}<small>${t.type === 'fiche' ? 'fiche · ' + t.n + ' champs' : t.n + ' entrées'}${st.cat === 'all' ? ' · ' + CATNAME[t.cat] : ''}</small></button>`).join('') : '';
+    }).join('');
+  }
+  function drawPanel() {
+    const t = idx.find(x => x.id === st.id);
+    if (!t) { $('#panel').innerHTML = '<p class="hint">Sélectionnez une table à gauche.</p>'; return; }
+    $('#panel').innerHTML = `<h2>${E.esc(t.titre)}</h2><p class="hint" style="margin-top:-.3rem">${E.esc(t.desc)}</p>
+      <div class="row"><button class="btn primary" data-act="reroll">🎲 Relancer</button>
+       <label>× <input type="number" min="1" max="20" value="${st.n}" id="n" style="width:64px"></label>
+       <span class="seedbox">graine <input type="text" id="seed" value="${E.esc(st.seed)}" aria-label="Graine" spellcheck="false" autocomplete="off"></span></div>
+      <div id="out">${st.res.map(r => r.fields
+        ? `<div class="out"><dl class="kv">${r.fields.map(f => `<dt>${E.esc(f.k)}</dt><dd>${E.esc(f.v)}</dd>`).join('')}</dl></div>`
+        : `<div class="out">${E.esc(r.text)}</div>`).join('')}</div>
+      <div class="row"><button class="btn" data-act="copy">Copier le résultat</button><button class="btn" data-act="link">🔗 Copier le lien</button></div>`;
+  }
+  async function run() {
+    if (!st.id) return;
+    const rng = E.makeRng(st.seed);
+    try { st.res = []; for (let i = 0; i < st.n; i++) st.res.push(await E.roll(st.id, rng)); }
+    catch (e) { st.res = [{ text: 'Erreur : ' + e.message }]; }
+    E.setParams({ t: st.id, seed: st.seed, n: st.n > 1 ? st.n : '', cat: st.cat === 'all' ? '' : st.cat });
+    drawList(); drawPanel();
+  }
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-cat]'); if (c) { st.cat = c.dataset.cat; E.setParams({ cat: st.cat === 'all' ? '' : st.cat }); drawList(); return; }
+    const b = e.target.closest('[data-id]'); if (b) { st.id = b.dataset.id; st.seed = E.newSeed(); run(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'reroll') { st.seed = E.newSeed(); run(); }
+    if (a.dataset.act === 'copy') E.copy(st.res.map(E.toText).join('\n\n'));
+    if (a.dataset.act === 'link') E.copy(E.setParams({ t: st.id, seed: st.seed, n: st.n > 1 ? st.n : '', cat: st.cat === 'all' ? '' : st.cat }), 'Lien copié');
+  });
+  document.addEventListener('change', e => {
+    if (e.target.id === 'n') { st.n = Math.min(20, Math.max(1, +e.target.value || 1)); run(); }
+    if (e.target.id === 'seed') { st.seed = e.target.value.trim() || E.newSeed(); run(); }
+  });
+  drawList();
+  if (st.id) run(); else drawPanel();
+})();
+</script>
+</body>
+</html>

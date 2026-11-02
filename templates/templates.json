@@ -1,0 +1,11 @@
+{
+  "templates": [
+    {"file": "fiche-personnage.md", "titre": "Fiche de personnage", "cat": "joueur", "desc": "Fiche générique à adapter à n'importe quel système."},
+    {"file": "pnj.md", "titre": "PNJ", "cat": "mj", "desc": "Un personnage non joueur : but, secret, attitude, ce qu'il apporte."},
+    {"file": "lieu.md", "titre": "Lieu", "cat": "mj", "desc": "Un endroit : ambiance, cinq sens, secrets, dangers."},
+    {"file": "faction.md", "titre": "Faction", "cat": "mj", "desc": "Une organisation avec but, méthodes, ressources et horloge."},
+    {"file": "scenario.md", "titre": "Scénario", "cat": "mj", "desc": "Trame de scénario ou de one-shot, avec issues multiples."},
+    {"file": "preparation-session.md", "titre": "Préparation de session", "cat": "mj", "desc": "Checklist en 8 étapes pour préparer une session légère."},
+    {"file": "compte-rendu.md", "titre": "Compte rendu de session", "cat": "commun", "desc": "Résumé de session pour retrouver le fil de la campagne."}
+  ]
+}

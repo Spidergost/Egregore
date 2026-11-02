@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Commun – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Ressources communes</h1>
+  <p class="lead">Ce qui sert aussi bien aux joueurs qu'au MJ : tables partagées, vocabulaire, bonnes pratiques de table.</p>
+
+  <div class="grid">
+    <a class="tile" href="tables.html"><span class="ico">🎲</span><h2>Tables aléatoires</h2><p>Plus de 50 tables et fiches, avec graine partageable.</p></a>
+    <a class="tile" href="../templates/"><span class="ico">📄</span><h2>Templates</h2><p>Modèles à copier ou télécharger.</p></a>
+  </div>
+
+  <section id="conseils" aria-labelledby="ct">
+    <h2 id="ct">Conseils de table</h2>
+    <details open><summary>Faire une session zéro</summary>
+      <p>Avant la première vraie partie, prenez une heure pour vous accorder. Quelques questions suffisent :</p>
+      <ul>
+        <li>Quel ton voulons-nous : sombre, héroïque, léger, mystérieux ?</li>
+        <li>Quels thèmes ne veut-on pas voir à la table (lignes) ? Lesquels seulement évoqués (voiles) ?</li>
+        <li>À quelle fréquence jouer, combien de temps, et que fait-on si quelqu'un manque ?</li>
+        <li>Les personnages se connaissent-ils ? Qu'est-ce qui les pousse à rester ensemble ?</li>
+      </ul>
+    </details>
+    <details><summary>Prendre soin des autres à la table</summary>
+      <p>Un rôle de sécurité simple : convenez qu'à tout moment n'importe qui peut demander de passer, de ralentir ou de changer de direction, sans devoir se justifier. La carte X ou un simple « pause, s'il vous plaît » font très bien l'affaire. Vérifiez régulièrement que tout le monde s'amuse.</p>
+    </details>
+    <details><summary>Partager le projecteur</summary>
+      <p>Donnez à chaque joueur des moments où son personnage est au centre. Posez des questions ouvertes (« Qu'est-ce que tu remarques ? », « Comment ton personnage réagit ? ») plutôt que de résumer les actions à leur place.</p>
+    </details>
+    <details><summary>Dire « oui, et… » ou « oui, mais… »</summary>
+      <p>Quand un joueur propose quelque chose d'amusant, acceptez-le et ajoutez-y un détail ou une complication. Les refus secs coupent l'élan ; les complications relancent le jeu.</p>
+    </details>
+    <details><summary>Terminer une session proprement</summary>
+      <p>Gardez dix minutes pour résumer ce qui s'est passé, noter les questions ouvertes et demander à chacun ce qu'il a préféré. Un bon compte rendu (voir le <a href="../templates/">template</a>) fait gagner beaucoup de temps à la session suivante.</p>
+    </details>
+  </section>
+
+  <section id="glossaire" style="margin-top:28px" aria-labelledby="gt">
+    <h2 id="gt">Glossaire</h2>
+    <input type="search" id="q" placeholder="Rechercher un terme…" aria-label="Rechercher dans le glossaire">
+    <dl class="gloss" id="gloss"><dt>Chargement…</dt></dl>
+  </section>
+</div>
+</main>
+<script>
+(async () => {
+  const E = Egregore; E.mount('commun');
+  const box = document.getElementById('gloss');
+  let terms = [];
+  try { terms = (await (await fetch(E.ROOT + 'commun/glossaire.json')).json()).termes; }
+  catch (e) { box.innerHTML = '<dt>Glossaire indisponible</dt><dd>Ouvrez le site via GitHub Pages ou un serveur local.</dd>'; return; }
+  const draw = q => {
+    const s = q.trim().toLowerCase();
+    const list = terms.filter(x => !s || (x.t + ' ' + x.d).toLowerCase().includes(s));
+    box.innerHTML = list.map(x => `<dt>${E.esc(x.t)}</dt><dd>${E.esc(x.d)}</dd>`).join('') || '<dt>Aucun résultat</dt>';
+  };
+  draw('');
+  document.getElementById('q').addEventListener('input', e => draw(e.target.value));
+})();
+</script>
+</body>
+</html>

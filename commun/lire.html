@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Lecture – Égrégore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="../">Égr<span>é</span>gore</a>
+  <nav class="main" aria-label="Navigation">
+    <a href="../player/">Joueur</a><a href="../game-master/">Maître du jeu</a><a href="./" aria-current="page">Commun</a><a href="../templates/">Templates</a>
+  </nav>
+  <button class="btn mini" data-act="theme" aria-label="Changer de thème">🌓 Thème</button>
+</div></header>
+<main><div class="wrap"><p><a href="./">← Commun</a></p><article class="card doc" id="doc">Chargement…</article></div></main>
+<script src="../assets/js/egregore.js"></script>
+<script>
+(async()=>{
+  const f=new URLSearchParams(location.search).get('f')||'';
+  const doc=document.getElementById('doc');
+  // uniquement des fichiers .md du dossier commun/, sans chemin
+  if(!/^[a-z0-9-]+\.md$/i.test(f)){doc.innerHTML='<p class="err">Document inconnu.</p>';return;}
+  try{
+    const res=await fetch(f);if(!res.ok)throw 0;
+    doc.innerHTML=Egregore.md(await res.text(),h=>'lire.html?f='+encodeURIComponent(h));
+    const h=doc.querySelector('h1');if(h)document.title=h.textContent+' – Égrégore';
+  }catch(e){doc.innerHTML='<p class="err">Document introuvable.</p>';}
+})();
+</script>
+</body>
+</html>

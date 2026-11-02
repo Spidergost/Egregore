@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Templates – Egregore</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🎲%3C/text%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/css/egregore.css">
+<script src="../assets/js/egregore.js"></script>
+</head>
+<body>
+<div id="hdr"></div>
+<main>
+<div class="wrap">
+  <h1 class="page">Templates</h1>
+  <p class="lead">Des modèles en Markdown à copier dans votre outil de notes (Obsidian, Notion, Google Docs…) ou à télécharger.</p>
+  <div class="split">
+    <aside class="card"><div class="pills" id="cats"></div><div class="tlist" id="list"></div></aside>
+    <section class="card" id="panel" aria-live="polite"><p class="hint">Chargement…</p></section>
+  </div>
+</div>
+</main>
+<script>
+(async () => {
+  const E = Egregore; E.mount('templates');
+  const CATS = [['all', 'Tous'], ['mj', 'MJ'], ['joueur', 'Joueur'], ['commun', 'Commun']];
+  const $ = s => document.querySelector(s);
+  let cat = E.getParam('cat') || 'all', cur = E.getParam('t'), items, text = '';
+  if (!CATS.some(c => c[0] === cat)) cat = 'all';
+  try { items = (await (await fetch(E.ROOT + 'templates/templates.json')).json()).templates; }
+  catch (e) { $('#panel').innerHTML = '<p><b>Impossible de charger les templates.</b></p><p class="hint">Ouvrez le site via GitHub Pages ou un serveur local.</p>'; return; }
+  function drawList() {
+    $('#cats').innerHTML = CATS.map(([k, l]) => `<button aria-pressed="${cat === k}" data-cat="${k}">${l}</button>`).join('');
+    $('#list').innerHTML = items.filter(t => cat === 'all' || t.cat === cat).map(t => `<button data-f="${t.file}" aria-pressed="${t.file === cur}">${E.esc(t.titre)}</button>`).join('');
+  }
+  async function show() {
+    const t = items.find(x => x.file === cur); if (!t) return;
+    $('#panel').innerHTML = `<h2>${E.esc(t.titre)}</h2><p class="hint" style="margin-top:-.3rem">${E.esc(t.desc)}</p><p class="hint">Chargement…</p>`;
+    try { text = await (await fetch(E.ROOT + 'templates/' + t.file)).text(); } catch (e) { text = 'Erreur de chargement.'; }
+    $('#panel').innerHTML = `<h2>${E.esc(t.titre)}</h2><p class="hint" style="margin-top:-.3rem">${E.esc(t.desc)}</p>
+      <div class="row" style="margin-bottom:10px"><button class="btn primary" data-act="copy">Copier</button><button class="btn" data-act="dl">⬇ Télécharger (.md)</button></div>
+      <pre class="md"></pre>`;
+    $('pre.md').textContent = text;
+    E.setParams({ t: cur, cat: cat === 'all' ? '' : cat });
+  }
+  document.addEventListener('click', e => {
+    const c = e.target.closest('[data-cat]'); if (c) { cat = c.dataset.cat; drawList(); return; }
+    const f = e.target.closest('[data-f]'); if (f) { cur = f.dataset.f; drawList(); show(); return; }
+    const a = e.target.closest('[data-act]'); if (!a) return;
+    if (a.dataset.act === 'copy') E.copy(text);
+    if (a.dataset.act === 'dl') E.download(cur, text, 'text/markdown');
+  });
+  drawList();
+  if (cur && items.some(x => x.file === cur)) show(); else { cur = null; $('#panel').innerHTML = '<p class="hint">Sélectionnez un modèle à gauche.</p>'; }
+})();
+</script>
+</body>
+</html>
