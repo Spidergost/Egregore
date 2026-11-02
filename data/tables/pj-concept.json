@@ -1,0 +1,21 @@
+{
+  "id": "pj-concept",
+  "titre": "Concepts de personnage",
+  "categorie": "Personnage joueur",
+  "description": "Pour les joueurs en panne d’inspiration.",
+  "interne": false,
+  "entrees": [
+    "Ancien soldat qui cherche à se racheter",
+    "Érudite curieuse, fuyant une bibliothèque qui brûle",
+    "Voleur au grand cœur et au portefeuille vide",
+    "Pèlerin dont la foi vacille",
+    "Cadet de noble famille déshérité",
+    "Guérisseuse qui refuse de choisir un camp",
+    "Chasseur de primes qui a épargné sa dernière cible",
+    "Ménestrel qui collectionne les secrets",
+    "Artisan devenu aventurier par accident",
+    "Orphelin élevé par une compagnie de théâtre",
+    "Garde-frontière chassé pour avoir désobéi",
+    "Marchand ruiné prêt à tout pour se refaire"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "salle-aspect",
+  "titre": "Aspect de salle",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Salle circulaire au plafond effondré",
+    "Couloir étroit aux murs couverts de fresques",
+    "Crypte aux sarcophages ouverts",
+    "Caverne luisante de champignons",
+    "Salle inondée à mi-cuisse",
+    "Bibliothèque en ruine",
+    "Forge éteinte",
+    "Salle du trône poussiéreuse"
+  ]
+}

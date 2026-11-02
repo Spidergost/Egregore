@@ -1,0 +1,10 @@
+{
+  "id": "nom-avec-surnom",
+  "titre": "Nom avec surnom",
+  "categorie": "Noms",
+  "description": "Prénom, dit surnom.",
+  "interne": false,
+  "entrees": [
+    "{prenoms}, dit {surnoms}"
+  ]
+}

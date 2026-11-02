@@ -1,0 +1,15 @@
+{
+  "id": "village-ambiance",
+  "titre": "Ambiance de village",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Paisible, presque trop",
+    "Tendue : on se méfie des étrangers",
+    "Animée par un marché permanent",
+    "Endeuillée",
+    "Pieuse et austère",
+    "Joyeuse et accueillante"
+  ]
+}

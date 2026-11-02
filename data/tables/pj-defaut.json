@@ -1,0 +1,17 @@
+{
+  "id": "pj-defaut",
+  "titre": "Défauts",
+  "categorie": "Personnage joueur",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Ne supporte pas qu’on lui donne des ordres",
+    "Ment avant même de réfléchir",
+    "Ne peut pas refuser un pari",
+    "Trop confiant, quitte à foncer",
+    "Rancunier",
+    "Vénère l’argent",
+    "Craint le feu",
+    "Parle trop quand il est nerveux"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "id": "village-fin",
+  "titre": "Fin de nom de village",
+  "categorie": "Noms",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "clair",
+    "froid",
+    "noir",
+    "brume",
+    "gué",
+    "mont",
+    "vert",
+    "fort",
+    "lac",
+    "ombre",
+    "pierre",
+    "aube",
+    "vent"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "id": "saints",
+  "titre": "Saints",
+  "categorie": "Noms",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Aubin",
+    "Ciran",
+    "Médard",
+    "Gilles",
+    "Léger",
+    "Ouen",
+    "Fiacre"
+  ]
+}

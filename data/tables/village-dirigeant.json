@@ -1,0 +1,15 @@
+{
+  "id": "village-dirigeant",
+  "titre": "Dirigeant de village",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Un maire vieillissant, dépassé",
+    "Un seigneur local tyrannique",
+    "Un conseil d’anciens querelleur",
+    "Une prêtresse respectée",
+    "Un capitaine de la garde autoritaire",
+    "Une guilde de marchands"
+  ]
+}

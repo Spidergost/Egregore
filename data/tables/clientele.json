@@ -1,0 +1,17 @@
+{
+  "id": "clientele",
+  "titre": "Clientèle",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Caravaniers et muletiers",
+    "Soldats en permission",
+    "Pèlerins fatigués",
+    "Mineurs couverts de poussière",
+    "Nobles incognito",
+    "Contrebandiers",
+    "Étudiants bruyants",
+    "Mercenaires en quête de contrat"
+  ]
+}

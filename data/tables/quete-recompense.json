@@ -1,0 +1,15 @@
+{
+  "id": "quete-recompense",
+  "titre": "Récompenses",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Une bourse bien garnie",
+    "Un titre ou des terres",
+    "Une faveur à encaisser",
+    "Un objet magique",
+    "Une information cruciale",
+    "Un allié durable"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "quete-complete",
+  "titre": "Quête complète",
+  "categorie": "Aventure",
+  "description": "Une accroche de scénario avec commanditaire, obstacle et rebondissement.",
+  "interne": false,
+  "entrees": [
+    "Commanditaire : {quete-commanditaire}.\nObjectif : {quete-objectif}.\nLieu : {quete-lieu}.\nObstacle : {quete-obstacle}.\nAntagoniste : {quete-antagoniste}.\nRebondissement : {quete-twist}.\nRécompense : {quete-recompense}.\nÉchéance : {quete-echeance}."
+  ]
+}

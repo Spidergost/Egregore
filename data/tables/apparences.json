@@ -1,0 +1,21 @@
+{
+  "id": "apparences",
+  "titre": "Apparences",
+  "categorie": "PNJ",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Grand et voûté, une cicatrice sur la joue",
+    "Petite, vive, les mains tachées d’encre",
+    "Large d’épaules, la barbe tressée de rubans",
+    "Élégant, mais aux vêtements rapiécés avec soin",
+    "Visage buriné, un œil laiteux",
+    "Cheveux d’un blanc éclatant malgré sa jeunesse",
+    "Tatouages mystérieux sur les avant-bras",
+    "Corpulent, au rire sonore",
+    "Maigre comme un clou, au regard perçant",
+    "Porte un lourd manteau en toute saison",
+    "Dents en or, sourire éclatant",
+    "Boite légèrement, appuyé sur une canne ouvragée"
+  ]
+}

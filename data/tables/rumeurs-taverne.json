@@ -1,0 +1,21 @@
+{
+  "id": "rumeurs-taverne",
+  "titre": "Rumeurs de taverne",
+  "categorie": "Lieux",
+  "description": "Pistes d’accroche à glisser au comptoir.",
+  "interne": false,
+  "entrees": [
+    "Un trésor serait caché sous l’ancien moulin",
+    "Le seigneur local ne sort plus de son château",
+    "Des lumières étranges dansent dans les marais",
+    "Un voyageur est mort ici sans qu’on sache de quoi",
+    "La milice recrute en secret",
+    "Une compagnie de mercenaires déserte le comté",
+    "Les loups ont changé d’habitudes cet automne",
+    "Un duel aura lieu à l’aube, nul ne sait entre qui",
+    "Le meunier a vu quelque chose dans la rivière",
+    "Le prévôt aurait des dettes de jeu",
+    "Une caravane n’est jamais arrivée de la capitale",
+    "Le vieux puits murmure la nuit"
+  ]
+}

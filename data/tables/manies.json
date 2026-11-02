@@ -1,0 +1,20 @@
+{
+  "id": "manies",
+  "titre": "Manies et tics de voix",
+  "categorie": "PNJ",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Triture sans cesse une pièce de monnaie",
+    "Parle de lui à la troisième personne",
+    "Ponctue ses phrases de proverbes inventés",
+    "Chuchote comme pour livrer un secret",
+    "Rit nerveusement avant de répondre",
+    "Ne regarde jamais dans les yeux",
+    "Cite des chiffres précis pour tout",
+    "Fredonne toujours le même air",
+    "Termine les phrases des autres",
+    "Mange en permanence",
+    "Jure par un dieu que personne ne connaît"
+  ]
+}

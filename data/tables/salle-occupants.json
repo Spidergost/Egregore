@@ -1,0 +1,16 @@
+{
+  "id": "salle-occupants",
+  "titre": "Occupants de salle",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Vide en apparence",
+    "Gobelins en pleine dispute",
+    "Squelettes immobiles",
+    "Une créature endormie",
+    "Un prisonnier enchaîné",
+    "Un gardien de pierre inerte",
+    "Des araignées géantes tapies au plafond"
+  ]
+}

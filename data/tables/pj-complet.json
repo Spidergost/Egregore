@@ -1,0 +1,10 @@
+{
+  "id": "pj-complet",
+  "titre": "Personnage complet",
+  "categorie": "Personnage joueur",
+  "description": "Un point de départ : nom, concept, défaut, objectif, lien.",
+  "interne": false,
+  "entrees": [
+    "{nom-complet} — {pj-concept}.\nAspect : {apparences}.\nDéfaut : {pj-defaut}.\nObjectif : {pj-objectif}.\nLien : {pj-lien}."
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "salle-complete",
+  "titre": "Salle de donjon",
+  "categorie": "Aventure",
+  "description": "Une pièce de donjon : aspect, occupants, danger, trésor, indice.",
+  "interne": false,
+  "entrees": [
+    "{salle-aspect}.\nOccupants : {salle-occupants}.\nDanger : {salle-danger}.\nTrésor : {salle-tresor}.\nIndice : {salle-indice}."
+  ]
+}

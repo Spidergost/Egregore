@@ -1,0 +1,21 @@
+{
+  "id": "village-debut",
+  "titre": "Début de nom de village",
+  "categorie": "Noms",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Mont",
+    "Val",
+    "Pont",
+    "Bois",
+    "Roche",
+    "Fontaine",
+    "Haut",
+    "Clair",
+    "Noir",
+    "Vieil",
+    "Cor",
+    "Aigue"
+  ]
+}

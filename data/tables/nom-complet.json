@@ -1,0 +1,10 @@
+{
+  "id": "nom-complet",
+  "titre": "Nom complet",
+  "categorie": "Noms",
+  "description": "Prénom + nom de famille.",
+  "interne": false,
+  "entrees": [
+    "{prenoms} {noms-famille}"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "id": "quete-objectif",
+  "titre": "Objectifs de quête",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Retrouver un objet volé",
+    "Escorter un convoi",
+    "Éliminer une menace",
+    "Libérer un prisonnier",
+    "Enquêter sur une disparition",
+    "Explorer des ruines",
+    "Négocier une trêve",
+    "Livrer un message sensible",
+    "Détruire un artefact"
+  ]
+}

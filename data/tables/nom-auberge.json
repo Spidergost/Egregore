@@ -1,0 +1,23 @@
+{
+  "id": "nom-auberge",
+  "titre": "Nom d’auberge",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Le Sanglier Borgne",
+    "Le Dragon Rouillé",
+    "La Chope Ivre",
+    "Le Corbeau d’Argent",
+    "L’Étoile Fatiguée",
+    "La Lanterne Bavarde",
+    "Le Cerf Boiteux",
+    "Le Tonneau Doré",
+    "La Harpe Sans Nom",
+    "Le Chat Dansant",
+    "La Marmite Noire",
+    "Le Pendu Heureux",
+    "La Sirène Rouillée",
+    "Le Griffon Ivre"
+  ]
+}

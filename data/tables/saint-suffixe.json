@@ -1,0 +1,15 @@
+{
+  "id": "saint-suffixe",
+  "titre": "Suffixes de saint",
+  "categorie": "Noms",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "des-Brumes",
+    "du-Gué",
+    "la-Forêt",
+    "sur-Marne",
+    "des-Aulnes",
+    "le-Vieux"
+  ]
+}

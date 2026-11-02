@@ -1,0 +1,17 @@
+{
+  "id": "nom-village",
+  "titre": "Nom de village",
+  "categorie": "Noms",
+  "description": "Nom de bourgade, parfois placée sous un saint.",
+  "interne": false,
+  "entrees": [
+    {
+      "t": "{village-debut}{village-fin}",
+      "w": 4
+    },
+    {
+      "t": "Saint-{saints}-{saint-suffixe}",
+      "w": 1
+    }
+  ]
+}

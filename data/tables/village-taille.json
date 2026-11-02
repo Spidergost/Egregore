@@ -1,0 +1,14 @@
+{
+  "id": "village-taille",
+  "titre": "Taille de village",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Hameau (≈ 30 habitants)",
+    "Village (≈ 200 habitants)",
+    "Gros village (≈ 500 habitants)",
+    "Bourg (≈ 1 000 habitants)",
+    "Petite ville (≈ 3 000 habitants)"
+  ]
+}

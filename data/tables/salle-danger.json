@@ -1,0 +1,16 @@
+{
+  "id": "salle-danger",
+  "titre": "Dangers de salle",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Dalles piégées",
+    "Gaz soporifique",
+    "Herse qui s’abat derrière les intrus",
+    "Statue qui s’anime",
+    "Glyphes explosifs",
+    "Plancher instable",
+    "Aucun danger visible"
+  ]
+}

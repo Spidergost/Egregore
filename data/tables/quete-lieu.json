@@ -1,0 +1,17 @@
+{
+  "id": "quete-lieu",
+  "titre": "Lieux d’aventure",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Ruines à moitié englouties",
+    "Forêt où la brume ne se lève jamais",
+    "Mine abandonnée",
+    "Château isolé",
+    "Marais",
+    "Col de montagne enneigé",
+    "Cité en proie à l’émeute",
+    "Temple oublié"
+  ]
+}

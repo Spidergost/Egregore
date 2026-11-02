@@ -1,0 +1,17 @@
+{
+  "id": "quete-commanditaire",
+  "titre": "Commanditaires",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Un noble inquiet pour sa réputation",
+    "Une guilde de marchands",
+    "Un temple",
+    "Un vieil aventurier blessé",
+    "Un enfant sans le sou mais désespéré",
+    "Un représentant de la couronne",
+    "Un inconnu masqué",
+    "Un ancien rival repenti"
+  ]
+}

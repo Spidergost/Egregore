@@ -1,0 +1,10 @@
+{
+  "id": "auberge-complete",
+  "titre": "Auberge complète",
+  "categorie": "Lieux",
+  "description": "Nom, tenancier, ambiance, plat, clientèle, rumeur et particularité.",
+  "interne": false,
+  "entrees": [
+    "{nom-auberge}, tenue par {nom-complet}.\nAmbiance : {ambiance-auberge}.\nSpécialité : {specialites}.\nClientèle : {clientele}.\nRumeur : {rumeurs-taverne}.\nParticularité : {particularites-auberge}."
+  ]
+}

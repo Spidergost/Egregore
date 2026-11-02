@@ -1,0 +1,23 @@
+{
+  "id": "surnoms",
+  "titre": "Surnoms",
+  "categorie": "Noms",
+  "description": "À coller derrière un nom : « dit … ».",
+  "interne": false,
+  "entrees": [
+    "le Borgne",
+    "Main-de-Fer",
+    "la Corneille",
+    "Pied-Léger",
+    "l’Ancien",
+    "Sans-Peur",
+    "la Rousse",
+    "Cœur-de-Pierre",
+    "le Silencieux",
+    "Œil-de-Lynx",
+    "Lame-Grise",
+    "le Chanceux",
+    "Barbe-Noire",
+    "la Louve"
+  ]
+}

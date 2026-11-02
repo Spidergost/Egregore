@@ -1,0 +1,15 @@
+{
+  "id": "pj-lien",
+  "titre": "Liens avec le groupe",
+  "categorie": "Personnage joueur",
+  "description": "À tirer pour relier deux personnages.",
+  "interne": false,
+  "entrees": [
+    "A déjà sauvé la vie d’un autre PJ, qui ne l’a jamais remercié",
+    "Doit une faveur à un autre PJ",
+    "Est de la même ville qu’un autre PJ, mais ils ne s’aimaient pas",
+    "Connaît un secret sur un autre PJ",
+    "Admire un autre PJ en secret",
+    "Travaillait pour la même personne qu’un autre PJ"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "pnj-complet",
+  "titre": "PNJ complet",
+  "categorie": "PNJ",
+  "description": "Un PNJ prêt à jouer : nom, métier, apparence, caractère, motivation, secret.",
+  "interne": false,
+  "entrees": [
+    "{nom-complet} — {metiers|min}.\nApparence : {apparences}.\nCaractère : {traits|min}. Manie : {manies}.\nVeut : {motivations}.\nSecret : {secrets}.\nAttitude envers les PJ : {attitudes|min}."
+  ]
+}

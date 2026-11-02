@@ -1,0 +1,15 @@
+{
+  "id": "village-richesse",
+  "titre": "Richesse de village",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Une mine d’étain",
+    "L’élevage de chevaux",
+    "Un lieu de pèlerinage",
+    "La pêche",
+    "Les vignobles",
+    "Les forges"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "id": "ambiance-auberge",
+  "titre": "Ambiance d’auberge",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Bruyante et enfumée",
+    "Calme et feutrée",
+    "Sinistre : les conversations s’arrêtent à votre entrée",
+    "Festive, avec des musiciens",
+    "Miteuse mais chaleureuse",
+    "Luxueuse, beaucoup trop pour l’endroit",
+    "Bondée de voyageurs",
+    "Presque vide, et on se demande pourquoi"
+  ]
+}

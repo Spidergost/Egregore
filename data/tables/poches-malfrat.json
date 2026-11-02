@@ -1,0 +1,21 @@
+{
+  "id": "poches-malfrat",
+  "titre": "Dans les poches d’un malfrat",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Une clé rouillée sans serrure connue",
+    "{2d6} pièces de cuivre",
+    "Un dé pipé",
+    "Une lettre non signée donnant un lieu et une heure",
+    "Une dent en or",
+    "Un petit couteau très bien entretenu",
+    "Un bout de carte déchiré",
+    "Une mèche de cheveux dans un médaillon",
+    "Un flacon d’un liquide douteux",
+    "Une pomme à moitié mangée",
+    "Un symbole de culte griffonné sur un tissu",
+    "Un reçu de pension pour une certaine « Mme Orlane »"
+  ]
+}

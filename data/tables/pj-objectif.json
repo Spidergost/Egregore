@@ -1,0 +1,16 @@
+{
+  "id": "pj-objectif",
+  "titre": "Objectifs personnels",
+  "categorie": "Personnage joueur",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Retrouver un frère ou une sœur disparu",
+    "Gagner assez pour racheter la ferme familiale",
+    "Se venger d’un ancien employeur",
+    "Découvrir ce qui est arrivé à son maître",
+    "Réparer une erreur de jeunesse",
+    "Devenir célèbre dans tout le royaume",
+    "Trouver un endroit où s’installer en paix"
+  ]
+}

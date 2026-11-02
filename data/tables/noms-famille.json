@@ -1,0 +1,29 @@
+{
+  "id": "noms-famille",
+  "titre": "Noms de famille",
+  "categorie": "Noms",
+  "description": "Noms de famille ou de maison.",
+  "interne": false,
+  "entrees": [
+    "de Montclair",
+    "Fauvel",
+    "Lenoir",
+    "du Gué",
+    "Taillefer",
+    "Maillard",
+    "Corbier",
+    "Delaunay",
+    "de Valmont",
+    "Ferrand",
+    "Boisjoli",
+    "Roche-Haute",
+    "Cordier",
+    "Vauquelin",
+    "Lebrun",
+    "de Brumelande",
+    "Tisserand",
+    "Marchebise",
+    "Hautefeuille",
+    "Pierrefeu"
+  ]
+}

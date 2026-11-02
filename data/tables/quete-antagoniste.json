@@ -1,0 +1,15 @@
+{
+  "id": "quete-antagoniste",
+  "titre": "Antagonistes",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Un seigneur ambitieux",
+    "Un culte secret",
+    "Une créature ancienne",
+    "Un ancien allié",
+    "Une bande de pillards",
+    "Un sorcier obsédé"
+  ]
+}

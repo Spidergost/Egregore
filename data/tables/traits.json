@@ -1,0 +1,25 @@
+{
+  "id": "traits",
+  "titre": "Traits de caractère",
+  "categorie": "PNJ",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Curieux",
+    "Méfiant",
+    "Jovial",
+    "Cupide",
+    "Loyal jusqu’à l’excès",
+    "Lâche",
+    "Pieux",
+    "Sarcastique",
+    "Mélancolique",
+    "Bavard",
+    "Hautain",
+    "Naïf",
+    "Colérique",
+    "Généreux",
+    "Obsédé par les détails",
+    "Superstitieux"
+  ]
+}

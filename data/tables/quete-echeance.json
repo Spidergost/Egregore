@@ -1,0 +1,13 @@
+{
+  "id": "quete-echeance",
+  "titre": "Échéances",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Avant la prochaine pleine lune",
+    "Dans trois jours",
+    "Immédiate : il reste quelques heures",
+    "Aucune limite… en apparence"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "id": "meteo",
+  "titre": "Météo du jour",
+  "categorie": "Aventure",
+  "description": "Pondérée : le beau temps est plus fréquent.",
+  "interne": false,
+  "entrees": [
+    {
+      "t": "Ciel dégagé, douce température",
+      "w": 3
+    },
+    {
+      "t": "Nuages et vent frais",
+      "w": 2
+    },
+    {
+      "t": "Bruine persistante",
+      "w": 2
+    },
+    "Brouillard épais le matin",
+    "Orage violent en fin de journée",
+    "Chaleur écrasante",
+    "Gel et neige fondue",
+    "Tempête : on s’abrite ou on s’expose"
+  ]
+}

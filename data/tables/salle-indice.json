@@ -1,0 +1,15 @@
+{
+  "id": "salle-indice",
+  "titre": "Indices de salle",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Le journal d’un explorateur",
+    "Une inscription dans une langue oubliée",
+    "Des traces de pas fraîches",
+    "Une carte partielle",
+    "Un symbole répété partout",
+    "Une odeur de brûlé suspecte"
+  ]
+}

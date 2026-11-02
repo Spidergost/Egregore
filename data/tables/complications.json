@@ -1,0 +1,19 @@
+{
+  "id": "complications",
+  "titre": "Complications en cours de scène",
+  "categorie": "Aventure",
+  "description": "Quand une scène manque de piquant.",
+  "interne": false,
+  "entrees": [
+    "Un allié change de camp",
+    "Du renfort arrive… pour l’autre camp",
+    "Le décor se dérobe (effondrement, incendie, crue)",
+    "Un objet important est perdu ou brisé",
+    "Une information capitale se révèle fausse",
+    "Un témoin s’enfuit",
+    "La garde arrive plus tôt que prévu",
+    "Quelqu’un tombe malade ou blessé",
+    "Un tiers très discret observait depuis le début",
+    "Rien ne va de travers, mais une rencontre s’annonce"
+  ]
+}

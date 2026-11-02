@@ -1,0 +1,16 @@
+{
+  "id": "village-probleme",
+  "titre": "Problème de village",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Les récoltes pourrissent sur pied",
+    "Des disparitions à la nuit tombée",
+    "Des brigands rançonnent la route",
+    "Une épidémie inexpliquée",
+    "Une querelle de succession",
+    "Un monstre rôde dans la forêt",
+    "Des impôts excessifs"
+  ]
+}

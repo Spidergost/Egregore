@@ -1,0 +1,10 @@
+{
+  "id": "village-complet",
+  "titre": "Village complet",
+  "categorie": "Lieux",
+  "description": "Un village avec son problème et son secret.",
+  "interne": false,
+  "entrees": [
+    "{nom-village} — {village-taille}.\nAmbiance : {village-ambiance}.\nParticularité : {village-particularite}.\nDirigeant : {village-dirigeant}.\nRichesse : {village-richesse}.\nProblème : {village-probleme}.\nSecret : {village-secret}."
+  ]
+}

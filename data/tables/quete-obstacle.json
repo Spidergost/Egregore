@@ -1,0 +1,15 @@
+{
+  "id": "quete-obstacle",
+  "titre": "Obstacles",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Une météo extrême",
+    "Une faction rivale poursuit le même but",
+    "Le temps est compté",
+    "Le guide est un traître",
+    "Un piège ancien",
+    "Une loi locale interdit la méthode évidente"
+  ]
+}

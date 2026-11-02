@@ -1,0 +1,15 @@
+{
+  "id": "salle-tresor",
+  "titre": "Trésors de salle",
+  "categorie": "Aventure",
+  "description": "",
+  "interne": true,
+  "entrees": [
+    "Un coffre verrouillé",
+    "Quelques pièces cachées dans un crâne",
+    "Une arme ancienne",
+    "Un livre aux pages collées",
+    "Rien, mais une inscription",
+    "Des gemmes dans une niche"
+  ]
+}

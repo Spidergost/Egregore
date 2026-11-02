@@ -1,0 +1,17 @@
+{
+  "id": "specialites",
+  "titre": "Spécialités de table",
+  "categorie": "Lieux",
+  "description": "",
+  "interne": false,
+  "entrees": [
+    "Ragoût de sanglier aux châtaignes",
+    "Bière ambrée brassée sur place",
+    "Hydromel épicé",
+    "Soupe d’orties et lard",
+    "Tourte aux champignons",
+    "Vin chaud aux épices",
+    "Pain noir et fromage très fort",
+    "Eau-de-vie de prune, surnommée « la Brûlante »"
+  ]
+}
